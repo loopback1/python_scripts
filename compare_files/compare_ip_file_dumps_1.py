@@ -44,3 +44,5 @@ print "\n\nfile1 unique IPs: " + str(len(old))
 print "file2 unique IPs: " + str(len(new))
 
 print "found: " + str(len(report))
+
+#test
