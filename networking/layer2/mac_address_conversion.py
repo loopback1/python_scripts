@@ -2,7 +2,6 @@
 # modify or filter characters from mac addresss
 # mac address normalizer
 
-
 import re
 mac = 'ffff.ffff.ffff'
 
