@@ -78,4 +78,4 @@ for i in report:
     
 print "\n\n%s has: %d" %(sys.argv[1], len(old))
 print "%s has: %d" % (sys.argv[2], len(new))
-print "total found: " + str(len(report))
+print "total found: %s " (str(len(report)))
