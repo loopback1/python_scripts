@@ -1,5 +1,5 @@
 # ARP/MAC
-# modify or filter characters from mac addresss
+# modify or filter characters from mac address
 # mac address normalizer
 
 import re
