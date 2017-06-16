@@ -17,14 +17,8 @@ username = raw_input('enter user: ')
 password = getpass('enter pass: ')
 
 device_ip = '''
-10.1.1.12
-10.1.1.13
-10.1.1.14
-10.1.1.15
-10.1.1.16
-10.1.1.17
-10.1.1.18
-10.1.1.19
+10.3.250.2
+10.2.255.2
 '''.strip().splitlines()
 
 
@@ -34,7 +28,7 @@ def my_function(i):
                                             secret=password)
         hostname = connection.send_command('show run hostname').strip().split()
         connection.config_mode()
-        x = connection.send_command('no logging host Internet 1.1.1.1')
+        x = connection.send_command('sh run ssh | i 10.245.3')
         x = connection.send_command('no logging host Inside 1.2.2.2')
         # x = connection.send_command('no logging host inside 10.1.40.5')
         # x = connection.send_command('sh run | i logging host')
