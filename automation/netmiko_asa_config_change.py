@@ -17,7 +17,7 @@ username = raw_input('enter user: ')
 password = getpass('enter pass: ')
 
 def get_ips():
-    with open('/home/jlima/asa_ip.txt') as f:
+    with open('/home/xyz/asa_ip.txt') as f:
         return [x.strip() for x in f]
 
 
