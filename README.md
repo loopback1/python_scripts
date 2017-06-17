@@ -1,2 +1,2 @@
 # scripts
-# just random snips I write to help with my tasks
+# just some small pieces of code to help me automate tasks
