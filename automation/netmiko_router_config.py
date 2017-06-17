@@ -47,7 +47,7 @@ def my_function(i):
         get_hostname = connection.send_command('sh run | i hostname')
         hostname = connection.find_prompt()
         # connection.config_mode()
-        # connection.send_command('ssh 10.245.242.0 255.255.255.0 ' + route_lookup(x))
+        # connection.send_command('ssh 10.x.y.0 255.255.255.0 ' + route_lookup(x))
         #        connection.send_command('clock timezone CST -6')
         #        connection.send_command('clock summer-time CST recurring')
         y = connection.send_command('sh run | s ip access-list standard ACL_SSH_VTY_ACCESS')
