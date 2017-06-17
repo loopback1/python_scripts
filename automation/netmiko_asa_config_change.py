@@ -43,13 +43,10 @@ def my_function(i):
         connection.config_mode()
         y = connection.send_command('sh run ssh | i 10\.3\.')
 
-        #x = connection.send_command('sh route 10.245.3.0 | i , via')
-        #connection.send_command('ssh 10.245.240.0 255.255.255.0 ' + route_lookup(x))
-        #connection.send_command('ssh 10.245.242.0 255.255.255.0 ' + route_lookup(x))
+        #x = connection.send_command('sh route 10.x.y.0 | i , via')
+        #connection.send_command('ssh 10.x.y.z.0 255.255.255.0 ' + route_lookup(x))
 #        y = connection.send_command('sh run ssh | i 10\.3\.')
 
-        #x = connection.send_command('no logging host inside 10.1.40.5')
-        #x = connection.send_command('sh run | i logging host')
         connection.disconnect()
         print '%s: %s \n' % (hostname[1], 'done')
         print '%s' % (y)
@@ -59,5 +56,6 @@ def my_function(i):
 
 pool = Pool(16)
 pool.map(my_function, device_ip)
+
 #pool.close
 #pool.join()

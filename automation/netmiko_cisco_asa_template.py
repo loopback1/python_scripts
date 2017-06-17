@@ -17,8 +17,8 @@ username = raw_input('enter user: ')
 password = getpass('enter pass: ')
 
 device_ip = '''
-10.3.250.2
-10.2.255.2
+10.x.y.z
+10.x.y.z
 '''.strip().splitlines()
 
 
@@ -28,9 +28,9 @@ def my_function(i):
                                             secret=password)
         hostname = connection.send_command('show run hostname').strip().split()
         connection.config_mode()
-        x = connection.send_command('sh run ssh | i 10.245.3')
+        x = connection.send_command('sh run ssh | i 10.x.y.z')
         x = connection.send_command('no logging host Inside 1.2.2.2')
-        # x = connection.send_command('no logging host inside 10.1.40.5')
+        # x = connection.send_command('no logging host inside 10.x.y.z')
         # x = connection.send_command('sh run | i logging host')
         connection.disconnect()
         print '%s: %s' % (hostname[1], 'done')
@@ -41,5 +41,5 @@ def my_function(i):
 
 pool = Pool(16)
 pool.map(my_function, device_ip)
-pool.close
-pool.join()
+#pool.close
+#pool.join()
