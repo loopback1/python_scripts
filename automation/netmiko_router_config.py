@@ -9,7 +9,7 @@
 import netmiko
 from multiprocessing import Pool
 from getpass import getpass
-# from netmiko import ConnectionHandler
+# from netmiko import ConnectHandler
 import re
 
 device_type = 'cisco_ios'
