@@ -35,8 +35,8 @@ def my_function(i):
         connection.disconnect()
         print '%s: %s' % (hostname[1], 'done')
         # print '%s: %s' % (hostname[1], x)
-    except netmiko.NetMikoTimeoutException:
-        print '%s: timeout' % (i)
+    except Exception as e:
+        print '%s: %s' % (i, e)
 
 
 pool = Pool(16)
