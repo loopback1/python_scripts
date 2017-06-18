@@ -37,7 +37,7 @@ def route_lookup(y):
 
 def my_function(i):
     try:
-        connection = netmiko.ConnectHandler(ip=i, device_type='cisco_asa', username=username, password=password,
+        connection = netmiko.ConnectHandler(ip=i, device_type=device_type, username=username, password=password,
                                             secret=password)
         hostname = connection.send_command('show run hostname').strip().split()
         connection.config_mode()
