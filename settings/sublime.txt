@@ -1,0 +1,6 @@
+# sublime key bindings
+
+[
+    { "keys": ["ctrl+\\"], "command": "toggle_side_bar" },
+]
+    
