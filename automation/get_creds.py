@@ -1,6 +1,6 @@
 # function to get credentials
 # asks for username and verifies password twice
-# requires import getpass
+
 from getpass import getpass
 
 
