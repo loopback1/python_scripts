@@ -5,16 +5,20 @@
 # ... just run this in linux and move on...
 # 
 # from __future__ import absolute_import, division, print_function
+# requires get_creds.py 
 
 import netmiko
+# import my get_creds.py functions
+
+import get_creds
 from multiprocessing import Pool
-from getpass import getpass
+
 # from netmiko import ConnectionHandler
 import json
 
 device_type = 'cisco_asa'
-username = raw_input('enter user: ')
-password = getpass('enter pass: ')
+
+username, password = get_creds.get_credentials()
 
 def get_ips():
     with open('/home/xyz/asa_ip.txt') as f:
@@ -22,6 +26,8 @@ def get_ips():
 
 
 """
+# different way to feed ips to my_function
+
 device_ip = '''
 10.1.1.1
 10.1.2.2

@@ -8,13 +8,15 @@
 
 import netmiko
 from multiprocessing import Pool
-from getpass import getpass
+# import my get_creds.py functions
+import get_creds
 # from netmiko import ConnectHandler
 import re
 
 device_type = 'cisco_ios'
-username = raw_input('enter user: ')
-password = getpass('enter pass: ')
+
+username, password = get_creds.get_credentials()
+
 ip_file = '/home/xx/router_ip.txt'
 
 
@@ -25,7 +27,7 @@ def get_ips():
 
 
 """
-alter nate way to get IP directly on this file
+different way to feed ips to my_function
 
 device_ip = '''
 10.1.1.1
@@ -43,17 +45,18 @@ def route_lookup(y):
 
 def my_function(i):
     try:
-        connection = netmiko.ConnectHandler(ip=i, device_type=device_type, username=username, password=password)
-        get_hostname = connection.send_command('sh run | i hostname')
+        connection = netmiko.ConnectHandler(
+            ip=i, device_type=device_type, username=username, password=password)
         hostname = connection.find_prompt()
         # connection.config_mode()
         # connection.send_command('ssh 10.x.y.0 255.255.255.0 ' + route_lookup(x))
         #        connection.send_command('clock timezone CST -6')
         #        connection.send_command('clock summer-time CST recurring')
-        y = connection.send_command('sh run | s ip access-list standard ACL_SSH_VTY_ACCESS')
+        y = connection.send_command(
+            'sh run | s ip access-list standard ACL_SSH_VTY_ACCESS')
         # for t in y:
-        #	if t:
-        #	connection.send(xyz)
+        #   if t:
+        #   connection.send(xyz)
         # y = connection.send_command('sh run ssh')
 
         connection.disconnect()
@@ -62,7 +65,6 @@ def my_function(i):
     except Exception as e:
         print '%s: %s' % (i, e)
 
-
+# define number of threads to fire up at once
 pool = Pool(16)
 pool.map(my_function, device_ip)
-
