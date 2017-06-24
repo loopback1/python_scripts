@@ -7,14 +7,14 @@ multiprocessing works better in linux... forking is not supported in windows
 #!/usr/bin/env python
 # from __future__ import absolute_import, division, print_function
 import netmiko
-# import my get_creds.py functions
-import get_creds
+# import my toolbox.py functions
+import toolbox
 from multiprocessing import pool
 import json
 
 device_type = 'cisco_asa'
 
-username, password = get_creds.get_credentials()
+username, password = toolbox.get_credentials()
 
 device_ip = '''
 10.x.y.z
@@ -42,5 +42,5 @@ def my_function(i):
 
 pool = Pool(16)
 pool.map(my_function, device_ip)
-#pool.close
-#pool.join()
+# pool.close
+# pool.join()

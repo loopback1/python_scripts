@@ -8,14 +8,14 @@
 
 import netmiko
 from multiprocessing import Pool
-# import my get_creds.py functions
-import get_creds
+# import my toolbox.py functions
+import toolbox
 # from netmiko import ConnectHandler
 import re
 
 device_type = 'cisco_ios'
 
-username, password = get_creds.get_credentials()
+username, password = toolbox.get_credentials()
 
 ip_file = '/home/xx/router_ip.txt'
 

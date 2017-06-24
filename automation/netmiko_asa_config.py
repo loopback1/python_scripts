@@ -5,18 +5,18 @@
 # ... just run this in linux and move on...
 #
 # from __future__ import absolute_import, division, print_function
-# requires my get_creds.py file
+# requires my toolbox.py file
 
 # from netmiko import ConnectionHandler
 import netmiko
-# import my get_creds.py functions
-import get_creds
+# import my toolbox.py functions
+import toolbox
 from multiprocessing import Pool
 import json
 
 device_type = 'cisco_asa'
 
-username, password = get_creds.get_credentials()
+username, password = toolbox.get_credentials()
 
 
 def get_ips():
