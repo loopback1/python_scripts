@@ -19,3 +19,4 @@ def my_func(mac_list):
                 continue
             else:
                 print "IP: " + _x + " MAC: " + _y
+

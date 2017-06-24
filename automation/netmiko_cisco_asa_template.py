@@ -7,14 +7,16 @@ multiprocessing works better in linux... forking is not supported in windows
 #!/usr/bin/env python
 # from __future__ import absolute_import, division, print_function
 import netmiko
-from multiprocessing import Pool
-from getpass import getpass
-# from netmiko import ConnectionHandler
+
+# import my get_creds.py functions
+
+import get_creds
+from multiprocessing import pool
 import json
 
 device_type = 'cisco_asa'
-username = raw_input('enter user: ')
-password = getpass('enter pass: ')
+
+username, password = get_creds.get_credentials()
 
 device_ip = '''
 10.x.y.z
