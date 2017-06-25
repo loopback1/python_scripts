@@ -1,6 +1,22 @@
-# sublime key bindings
+/* 
+
+sublime key bindings
+
+*/
 
 [
     { "keys": ["ctrl+\\"], "command": "toggle_side_bar" },
 ]
     
+/* 
+
+sublime ignore PEP long line errors
+
+*/
+
+{
+	"pep8_ignore":
+		[
+    	"E501"
+		]
+}
