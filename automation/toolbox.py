@@ -7,6 +7,7 @@ from getpass import getpass
 def get_input(prompt=''):
     try:
         line = raw_input(prompt)
+    # for python3 compatability.. use input()
     except NameError:
         line = input(prompt)
     return line
