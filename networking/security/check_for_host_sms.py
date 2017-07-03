@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# this is to alert when a particluar host is seeing on the network doing
+# this is to alert when a particluar host is on the network doing
 # uses smtplib to send sms using a gmail account
 # uses scapy module to sniff packets on the wire
 
@@ -8,13 +8,6 @@ import time
 import smtplib
 from scapy.all import *
 
-'''
-
-listen for incoming packets on port 53/dns
-alert when host is seeing on the network
-
-
-'''
 
 pcap_filter = r'host 10.255.20.121 and dst port 53'
 
