@@ -66,10 +66,13 @@ def my_function(i):
         # y = connection.send_command('sh run ssh')
 
         connection.disconnect()
-        print '%s: %s \n' % (hostname, i)
-        print '%s' % (y)
+        if y:
+            print '%s: %s --> done' % (hostname, i)
+            print '%s\n' % (y)
+        else:
+            print '%s: %s --> done' % (hostname, i)
     except Exception as e:
-        print '%s: %s' % (i, e)
+        print '%s: %s\n\n' % (i, e)
 
 # define number of threads to fire up at once
 pool = Pool(16)
