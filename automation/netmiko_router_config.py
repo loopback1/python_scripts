@@ -51,9 +51,12 @@ def route_lookup(y):
 
 def my_function(i):
     try:
-        connection = netmiko.ConnectHandler(
-            ip=i, device_type=device_type, username=username, password=password)
+        connection = netmiko.ConnectHandler(ip=i, device_type=device_type, username=username, password=password)
+        # add global delay to slow devices requiring longer delay
+        # connection = netmiko.ConnectHandler(ip=i, device_type=device_type, username=username, password=password, global_delay_factor=60)
+
         hostname = connection.find_prompt()
+
         # connection.config_mode()
         # connection.send_command('ssh 10.x.y.0 255.255.255.0 ' + route_lookup(x))
         #        connection.send_command('clock timezone CST -6')
