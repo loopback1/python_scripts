@@ -23,14 +23,6 @@ device_type = 'cisco_ios'
 
 username, password = toolbox.get_credentials()
 
-ip_file = '/home/xx/router_ip.txt'
-
-
-def get_ips():
-    ''' pull ips from file'''
-    with open(ip_file) as f:
-        return [x.strip() for x in f]
-
 
 """
 different way to feed ips to my_function
@@ -41,12 +33,8 @@ device_ip = '''
 '''.strip().splitlines()
 """
 
-device_ip = get_ips()
+device_ip = toolbox.get_ips('ip.list.txt')
 
-
-def route_lookup(y):
-    ''' split string and return last element '''
-    return y.split()[-1]
 
 
 def my_function(i):

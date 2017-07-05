@@ -23,11 +23,7 @@ device_type = 'cisco_asa'
 
 username, password = toolbox.get_credentials()
 
-
-def get_ips():
-    with open('/home/xyz/asa_ip.txt') as f:
-        return [x.strip() for x in f]
-
+device_ip = toolbox.get_ips('ip.list.txt')
 
 """
 # different way to feed ips to my_function
@@ -38,12 +34,6 @@ device_ip = '''
 '''.strip().splitlines()
 
 """
-
-device_ip = get_ips()
-
-
-def route_lookup(y):
-    return y.split()[-1]
 
 
 def my_function(i):
