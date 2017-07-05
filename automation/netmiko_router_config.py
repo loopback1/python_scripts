@@ -40,15 +40,14 @@ device_ip = toolbox.get_ips('ip.list.txt')
 def my_function(i):
     try:
         connection = netmiko.ConnectHandler(ip=i, device_type=device_type, username=username, password=password)
-        # add global delay to slow devices requiring longer delay
-        # connection = netmiko.ConnectHandler(ip=i, device_type=device_type, username=username, password=password, global_delay_factor=60)
+        # add global delay to slow devices requiring longer delay: global_delay_factor=60
 
         hostname = connection.find_prompt()
 
         # connection.config_mode()
         # connection.send_command('ssh 10.x.y.0 255.255.255.0 ' + route_lookup(x))
-        #        connection.send_command('clock timezone CST -6')
-        #        connection.send_command('clock summer-time CST recurring')
+        # connection.send_command('clock timezone CST -6')
+        # connection.send_command('clock summer-time CST recurring')
         y = connection.send_command(
             'sh run | s ip access-list standard ACL_SSH_VTY_ACCESS')
         # for t in y:
