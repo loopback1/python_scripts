@@ -10,7 +10,6 @@ import netmiko
 # import my toolbox.py functions
 import toolbox
 from multiprocessing import pool
-import json
 import signal
 
 signal.signal(signal.SIGPIPE, signal.SIG_DFL)  # IOerror on broken pipe
@@ -31,21 +30,17 @@ def my_function(i):
     try:
         connection = netmiko.ConnectHandler(ip=i, device_type='cisco_asa', username=username, password=password,
                                             secret=password)
-        #hostname = connection.send_command('show run hostname').strip().split()
+      
         hostname = connection.find_prompt()
         connection.config_mode()
         x = connection.send_command('sh run ssh | i 10.x.y.z')
         x = connection.send_command('no logging host Inside 1.2.2.2')
-        # x = connection.send_command('no logging host inside 10.x.y.z')
-        # x = connection.send_command('sh run | i logging host')
         connection.disconnect()
         print '%s: %s' % (hostname, 'done')
-        # print '%s: %s' % (hostname[1], x)
+      
     except Exception as e:
         print '%s: %s' % (i, e)
 
 
 pool = Pool(16)
 pool.map(my_function, device_ip)
-# pool.close
-# pool.join()

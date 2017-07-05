@@ -40,14 +40,10 @@ def my_function(i):
     try:
         connection = netmiko.ConnectHandler(ip=i, device_type=device_type, username=username, password=password,
                                             secret=password)
-        #hostname = connection.send_command('show run hostname').strip().split()
+
         hostname = connection.find_prompt()
         connection.config_mode()
         y = connection.send_command('sh run ssh | i 10\.3\.')
-
-        # x = connection.send_command('sh route 10.x.y.0 | i , via')
-        # connection.send_command('ssh 10.x.y.z.0 255.255.255.0 ' + route_lookup(x))
-#        y = connection.send_command('sh run ssh | i 10\.3\.')
 
         connection.disconnect()
         print '%s: %s \n' % (hostname, 'done')
@@ -59,5 +55,3 @@ def my_function(i):
 pool = Pool(16)
 pool.map(my_function, device_ip)
 
-# pool.close
-# pool.join()
