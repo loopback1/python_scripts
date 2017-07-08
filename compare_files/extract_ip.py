@@ -3,8 +3,6 @@ import sys
 #from netaddr import CIDR, IP
 file = sys.argv[1]
 
-
-
 def get_ips(file):
     with open(file) as f:
         x = [x.strip() for x in f]
