@@ -1,6 +1,7 @@
 import re
 import sys
 #from netaddr import CIDR, IP
+
 file = sys.argv[1]
 
 def get_ips(file):
