@@ -12,5 +12,6 @@ def get_ips(file):
         clean_ips = {x for i in ips for x in i}
         return list(clean_ips)
 
-print get_ips(file)
+for i in get_ips(file):
+    print i
 
