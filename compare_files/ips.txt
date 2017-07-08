@@ -1,0 +1,128 @@
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:33625 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:33625 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1 
+          RX bytes:12997409 (12.9 MB)  TX bytes:12997409 (12.9 MB)
+
+wlp58s0   Link encap:Ethernet  HWaddr 64:80:99:9e:76:a4  
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet addr:10.255.20.181  Bcast:10.255.20.255  Mask:255.255.255.0
+          inet6 addr: fe80::b0dc:ef48:a805:6d38/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:1184099 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:251096 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:1625010247 (1.6 GB)  TX bytes:36560344 (36.5 MB)
+
