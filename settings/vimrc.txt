@@ -73,7 +73,6 @@ filetype plugin indent on
 
 set laststatus=2
 let g:airline_powerline_fonts = 1
-let g:airline_theme='powerlineish'
 
 " let g:ycm_python_binary_path = '/usr/bin/python3'
 " nerdtree
@@ -100,4 +99,4 @@ let g:syntastic_check_on_wq = 0
 
 " python - F9 to execute python script
 nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
-
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
