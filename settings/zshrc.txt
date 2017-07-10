@@ -10,7 +10,9 @@
 ZSH_THEME="powerline"
 export POWERLINE_PATH="short"
 export POWERLINE_DETECT_SSH="true"
-
+export POWERLINE_HIDE_USER_NAME="true"
+export POWERLINE_RIGHT_B="none"
+export POWERLINE_DISABLE_RPROMPT="true"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
