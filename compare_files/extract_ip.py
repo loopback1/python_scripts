@@ -9,7 +9,7 @@ def get_ips(file):
         x = [x.strip() for x in f]
         ips = [re.findall('[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}', t) for t in x]
         clean_ips = {x for i in ips for x in i}
-        return list(clean_ips)
+        return sorted(list(clean_ips))
 
 for i in get_ips(file):
     print i
