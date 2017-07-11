@@ -22,7 +22,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-syntastic/syntastic'
-
+Plugin 'Yggdroot/indentLine'
 "
 " " The following are examples of different formats supported.
 " " Keep Plugin commands between vundle#begin/end.
@@ -107,4 +107,7 @@ inoremap [ []<Esc>i
 inoremap { {}<Esc>i
 inoremap " ""<Esc>i
 inoremap ' ''<Esc>i
-
+" encryption use :X to set encryption key :set key= , to reset"
+set cm=blowfish2
+" default register size bump"
+set viminfo='20,<1000,s1000
