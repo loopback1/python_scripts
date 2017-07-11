@@ -1,0 +1,16 @@
+pip3 install
+pip3 install --user git+git://github.com/powerline/powerline.git 
+
+fonts:
+git clone https://github.com/powerline/fonts.git
+
+run ./install
+
+see:
+
+https://askubuntu.com/questions/393005/having-problem-with-fonts-in-vim-airline
+
+select patched font in gnome-terminal profile settings
+
+
+

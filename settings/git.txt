@@ -1,3 +1,6 @@
 # force local override
 git fetch --all
 git reset --hard origin/master
+# change repo to ssh
+git remote set-url origin git@github.com:username/repo-name-here.git
+
