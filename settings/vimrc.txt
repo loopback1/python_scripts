@@ -68,7 +68,7 @@ set number
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:.
 syntax on
 filetype plugin indent on
-
+set incsearch
 " vim-airline 
 
 set laststatus=2
