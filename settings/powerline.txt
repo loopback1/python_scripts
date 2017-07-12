@@ -13,4 +13,13 @@ https://askubuntu.com/questions/393005/having-problem-with-fonts-in-vim-airline
 select patched font in gnome-terminal profile settings
 
 
+easier setup on ubuntu
+
+sudo apt install powerline
+
+fire up tmux, inside tmux run:
+
+    powerline-config tmux setup
+
+
 
