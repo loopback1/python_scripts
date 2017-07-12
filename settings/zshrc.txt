@@ -87,3 +87,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+export VIRTUAL_ENV_DISABLE_PROMPT=false
+source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+
+
