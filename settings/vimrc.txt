@@ -125,9 +125,9 @@ set incsearch
 set lbr
 
 " set autoindent
-set ai
+"set ai
 " set smart indent, useful for coding
-set si
+"set si
 
 " tell vim what background you have for proper syntax highlighting
 " set bg=light
