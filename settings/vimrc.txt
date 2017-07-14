@@ -139,3 +139,7 @@ set lbr
 " map <F2> itest<CR>  
 " allow switching buffers with out saving first
 set hidden
+" change C-a and C-x behavior to use decimal and ignore octal
+" additon and subtraction
+set nrformats-=octal
+
