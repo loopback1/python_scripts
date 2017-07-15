@@ -1,0 +1,15 @@
+regex removes blanks at end of line
+
+    :\s*$::
+
+or (to avoid acting on all lines):
+
+    s:\s\+$::)
+
+delete blank lines:
+   :g/^$/ d 
+
+reduce multiple blank lines to a single blank
+    :g/^$/,/./-j
+
+
