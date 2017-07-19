@@ -1,2 +1,85 @@
+# powerline
 source /home/jlima/.local/lib/python3.5/site-packages/powerline/bindings/tmux/powerline.conf
+
+# need this for powerline fonts to work
 set-option -g default-terminal "screen-256color"
+
+# remove delay 
+set -s escape-time 1
+
+# set base window index to start @ 1 instead of 0
+# this helps when switching windows by index number
+
+set -g base-index 1
+
+# set base index for panes to 1 instead of 0
+
+set -g pane-base-index 1
+
+# bind r to reload .tmux.conf using Ctr-b r and display "reloaded" 
+
+bind r source-file ~/.tmux.conf \; display "Reloaded!"
+
+# splitting panes with | and - instead of default
+
+bind | split-window -h
+bind - split-window -v
+
+# remap pane movement keys to vim style movements using hjkl
+
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# vim style window cycle commands
+
+bind -r C-h select-window -t:-
+bind -r C-l select-window -t:+
+
+# resizing panes
+
+bind -r H resize-pane -L 5
+bind -r J resize-pane -D 5
+bind -r K resize-pane -U 5
+bind -r L resize-pane -R 5
+
+# mouse support
+
+set -g mouse on
+
+# find colors for terminal use in terminal
+# for i in {0.255}
+#  do
+#  printf "\x1b[38;5;${i}m${i} "
+# done
+
+# active pane normal, other shaded out
+
+#setw -g window-style fg=colour244,bg=colour235
+#setw -g window-active-style fg=white,bg=black
+
+#set -g status-left "#[fg=green]#S"
+
+# enable vim keys in copy mode Ctrl-b ] 
+
+setw -g mode-keys vi
+
+# copy mode Ctr-b ]
+#bind Escape copy-mode
+# bind -t vi-copy 'v' begin-selection
+# bind -t vi-copy 'y' copy-selection
+unbind p
+bind p paste-buffer
+
+# use xclip to save buffer
+bind C-c run "tmux save-buffer -| xclip -i -sel clipboard"
+
+# sync pannel input
+
+bind C-s set-window-option synchronize-panes \; display "Synced!"
+
+# set default shell
+
+set -g default-shell /bin/zsh
+
