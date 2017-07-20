@@ -112,3 +112,6 @@ filetype plugin indent on    " required
 " IndentLine enabled by default
 let g:indentLine_enabled = 1
 
+" set jj as ESC key for faster in and out of insert/normal mode
+
+imap jj <ESC> 
