@@ -141,8 +141,8 @@ set wildignore+=*.swp,*.mp4,*.mp3,*.avi
 " create temp directory
 
 " Automatically create .backup directory, writable by the group.
-if filewritable(".") && ! filewritable(".tmp")
-  silent execute '!umask 002; mkdir .tmp'
+if filewritable(".") && ! filewritable("~/.tmp")
+  silent execute '!umask 002; mkdir ~/.tmp'
 endif
 
 " dont clutter my dirs with tmp and swp files
