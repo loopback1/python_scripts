@@ -1,2 +1,5 @@
 # scripts
-# just some small pieces of code to help me automate tasks
+~~~
+# Just some random pieces of code
+~~~
+
