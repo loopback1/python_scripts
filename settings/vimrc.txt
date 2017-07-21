@@ -19,7 +19,8 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'Yggdroot/indentLine'
 Plugin 'tpope/vim-surround'
-Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'wincent/command-t'
+"Plugin 'christoomey/vim-tmux-navigator'
 
 " color theme
 Plugin 'nanotech/jellybeans.vim'
@@ -74,8 +75,6 @@ set cm=blowfish2
 set viminfo='20,<1000,s1000
 set t_Co=256
 
-" keep 500 lines of command line history
-set history=500
 
 " show incomplete commands as they are typed, e.x. 2yy
 set showcmd
@@ -85,13 +84,6 @@ set incsearch
 
 " better line wrapping
 set lbr
-
-" set tag file search order
-set tags=./tags;
-
-" dont wait too long for the next keypress (particularly in ambigious
-" leader situations)
-set timeoutlen=500
 
 " set autoindent
 "set ai
@@ -140,8 +132,3 @@ set ttimeoutlen=1
 
 " set gutter background to black
 highlight SignColumn ctermbg=black
-
-" Leader mapped commands
-
-map <Leader>bb :!bundle install<cr>
-map <Leader>gw :!git add . && git commit -m 'WIP' && git push<cr>
