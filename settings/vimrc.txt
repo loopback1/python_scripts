@@ -130,6 +130,12 @@ set noesckeys
 set ttimeout
 set ttimeoutlen=1
 
+" ignore this in searches
+set wildignore+=*.a,*.o
+set wildignore+=*.bmp,*.jpg,*.png,*.gif
+set wildignore+=*.swp,*.mp4,*.mp3,*.avi
+
+
 " dont clutter my dirs with tmp and swp files
 set directory=~/.tmp
 
