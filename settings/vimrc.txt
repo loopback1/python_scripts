@@ -141,9 +141,9 @@ set wildignore+=*.swp,*.mp4,*.mp3,*.avi
 " create temp directory
 
 " Automatically create .backup directory, writable by the group.
-if filewritable(".") && ! filewritable("~/.tmp")
-  silent execute '!umask 002; mkdir ~/.tmp'
-endif
+" if filewritable(".") && ! filewritable("~/.tmp")
+"   silent execute '!umask 002; mkdir ~/.tmp'
+" endif
 
 " dont clutter my dirs with tmp and swp files
 set directory=~/.tmp
@@ -158,3 +158,4 @@ map <Leader>sh :sh
 map <Leader>dr :e ~/Dropbox<cr>
 map <Leader>an :e ~/Dropbox/notes/ansible-notes.txt<cr>
 map <Leader>pn :e ~/Dropbox/notes/personal-notes.txt<cr>
+map <Leader>wn :e ~/Dropbox/notes/work-notes.txt<cr>
