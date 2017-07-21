@@ -1,5 +1,5 @@
 # scripts
 ~~~
-# Just some random pieces of code
+Just some random pieces of code
 ~~~
 

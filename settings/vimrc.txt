@@ -130,5 +130,16 @@ set noesckeys
 set ttimeout
 set ttimeoutlen=1
 
+" dont clutter my dirs with tmp and swp files
+set directory=~/.tmp
+
 " set gutter background to black
 highlight SignColumn ctermbg=black
+
+" leader mappings 
+
+map <Leader>gw :!git add . && git commit -m 'updates' && git push<cr>
+map <Leader>sh :sh 
+map <Leader>dr :e ~/Dropbox<cr>
+map <Leader>an :e ~/Dropbox/notes/ansible-notes.txt<cr>
+map <Leader>pn :e ~/Dropbox/notes/personal-notes.txt<cr>
