@@ -39,6 +39,9 @@ filetype plugin indent on
 " vim-airline 
 let g:airline_powerline_fonts = 1
 
+" command-t max files to search
+let g:CommandTMaxFiles=200000
+
 " nerdtree
 map <C-\> :NERDTreeToggle<CR>
 
@@ -135,6 +138,12 @@ set wildignore+=*.a,*.o
 set wildignore+=*.bmp,*.jpg,*.png,*.gif
 set wildignore+=*.swp,*.mp4,*.mp3,*.avi
 
+" create temp directory
+
+" Automatically create .backup directory, writable by the group.
+if filewritable(".") && ! filewritable(".tmp")
+  silent execute '!umask 002; mkdir .tmp'
+endif
 
 " dont clutter my dirs with tmp and swp files
 set directory=~/.tmp
