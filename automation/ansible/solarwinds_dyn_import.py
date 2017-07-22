@@ -2,8 +2,8 @@
 
 # jlima 
 # 7/22/2017
-# import devices from solarwinds using custom properties. swis queries can be generated
-# using windows swis tool from solarwinds SDK, requires local read only account to run on 
+# import devices from solarwinds to ansible Tower leveraging custom properties on the node. swis queries can be generated
+# using windows swis tool from solarwinds SDK, requires local read only account to run on.
 # needs work to separate host results by groups...
 # DEVICE_TYPE is a custom property assigned to nodes.. can be a regular attribute like Vendor etc..
 #
