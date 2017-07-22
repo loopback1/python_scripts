@@ -155,6 +155,7 @@ highlight SignColumn ctermbg=black
 " leader mappings 
 
 map <Leader>gw :!git add . && git commit -m 'updates' && git push<cr>
+map <Leader>bp :!bpython -i %<cr>
 map <Leader>sh :sh 
 map <Leader>dr :e ~/Dropbox<cr>
 map <Leader>an :e ~/Dropbox/notes/ansible-notes.txt<cr>
