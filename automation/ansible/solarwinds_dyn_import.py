@@ -1,11 +1,12 @@
 # jlima 
 # 7/22/2017
-# import devices from solarwinds using custom properties. swis queries can be modified
-# using windows swis tool from solarwinds, requires local read only account to run on 
+# import devices from solarwinds using custom properties. swis queries can be generated
+# using windows swis tool from solarwinds SDK, requires local read only account to run on 
 # needs work to separate host results by groups...
 # DEVICE_TYPE is a custom property assigned to nodes.. can be a regular attribute like Vendor etc..
 #
-# requires: https://github.com/solarwinds/orionsdk-python
+# requires python module: https://github.com/solarwinds/orionsdk-python
+# SWIS query tool: https://github.com/solarwinds/OrionSDK/releases
 #
 
 import json
