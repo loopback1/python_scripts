@@ -1,3 +1,5 @@
+#!/var/lib/awx/venv/tower/bin/python
+
 # jlima 
 # 7/22/2017
 # import devices from solarwinds using custom properties. swis queries can be generated
@@ -13,28 +15,30 @@ import json
 import requests
 from orionsdk import SwisClient
 
-npm_server = '10.1.2.3'
-username = 'account'
-password = 'password'
+device_type = "'Router'"
 
-device_type = "'firewall'"
+npm_server = '1.2.3.4'
+username = 'username'
+password = 'password'
 
 verify = False
 if not verify:
     from requests.packages.urllib3.exceptions import InsecureRequestWarning
     requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
+
 swis = SwisClient(npm_server, username, password)
 
-ios_router = swis.query( "SELECT TOP 1000 IPAddress FROM Orion.Nodes I WHERE I.CustomProperties.DEVICE_TYPE = " + device_type )
 
-data = {'_meta': {'hostvars': {}}, 'hosts' : []}
+results = swis.query( "SELECT TOP 1000 IPAddress FROM Orion.Nodes I WHERE I.CustomProperties.DEVICE_TYPE = " + device_type )
 
-def get_inv():
-    for i in ios_router['results']:
+data = {'_meta': {'hostvars': {}}, 'hosts' : []} 
+
+def get_inv(sw_results):
+    for i in sw_results['results']:
         for k,v  in i.items():
             data['hosts'].append(v)
     print(json.dumps(data, sort_keys=True, indent=2))
-        
-get_inv()
+         
+get_inv(results)
 
