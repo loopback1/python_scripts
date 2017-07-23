@@ -1,4 +1,4 @@
-#!/var/lib/awx/venv/tower/bin/python
+#!/var/lib/awx/venv/ansible/bin/python
 
 # jlima 
 # 7/22/2017
@@ -8,7 +8,9 @@
 # DEVICE_TYPE is a custom property assigned to nodes.. can be a regular attribute like Vendor etc..
 #
 # requires python module: https://github.com/solarwinds/orionsdk-python
-# SWIS query tool: https://github.com/solarwinds/OrionSDK/releases
+# drop orionsdk folder into: /var/lib/awx/venv/ansible/lib/python2.7/site-packages
+#
+# windows SWIS query tool: https://github.com/solarwinds/OrionSDK/releases
 #
 
 import json
