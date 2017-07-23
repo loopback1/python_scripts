@@ -152,6 +152,9 @@ set directory=~/.tmp
 " set gutter background to black
 highlight SignColumn ctermbg=black
 
+" disable this keys
+map K <Nop>
+
 " leader mappings 
 
 map <Leader>gw :!git add . && git commit -m 'updates' && git push<cr>
