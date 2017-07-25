@@ -15,7 +15,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/indentpython.vim'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'Yggdroot/indentLine'
 Plugin 'tpope/vim-surround'
@@ -27,6 +27,9 @@ Plugin 'nanotech/jellybeans.vim'
 
 " plugins above this line
 call vundle#end()            " required
+
+" AirlineTheme
+let g:airline_theme='powerlineish'
 
 set shiftwidth=4
 set expandtab
@@ -157,10 +160,11 @@ map K <Nop>
 
 " leader mappings 
 
-map <Leader>gw :!git add . && git commit -m 'updates' && git push<cr>
+map <Leader>gw :!git add . && git commit -m 'updating stuff' && git push<cr>
 map <Leader>bp :!bpython -i %<cr>
 map <Leader>sh :sh 
 map <Leader>dr :e ~/Dropbox<cr>
 map <Leader>an :e ~/Dropbox/notes/ansible-notes.txt<cr>
 map <Leader>pn :e ~/Dropbox/notes/personal-notes.txt<cr>
 map <Leader>wn :e ~/Dropbox/notes/work-notes.txt<cr>
+map <Leader>sn :e ~/Dropbox/notes/speed-notes.txt<cr>
