@@ -1,4 +1,4 @@
-You can use built-in profiling support to detect slow issues with vim: after launching vim do
+# You can use built-in profiling support to detect slow issues with vim: after launching vim do
 
 :profile start profile.log
 :profile func *
@@ -12,7 +12,7 @@ https://github.com/r00k/dotfiles/blob/master/vimrc
 
 # install command-t dependencies
 
-sudo apt install ruby-dev rubygens gcc
+sudo apt install ruby-dev rubygems gcc
 
 cd ~/.vim/bundle/command-t
 
