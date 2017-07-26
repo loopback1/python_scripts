@@ -182,8 +182,6 @@ set nofoldenable " Say no to code folding...
 
 " By default, vim thinks .md is Modula-2.
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-" hide markdown error highlighting
-syn match markdownError "\w\@<=\w\@="
 
 " Without this, vim breaks in the middle of words when wrapping
 autocmd FileType markdown setlocal nolist wrap lbr
