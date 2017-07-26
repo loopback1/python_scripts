@@ -30,6 +30,7 @@ def get_credentials():
             password = None
     return username, password
 
+# get ip addresses from a file, one ip per line
 
 def get_ips(ip_file):
     ''' 
