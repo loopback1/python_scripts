@@ -170,8 +170,8 @@ highlight SignColumn ctermbg=black
 map K <Nop>
 
 " add black line to mark 80/column
-set colorcolumn=80
-highlight ColorColumn ctermbg=235
+" set colorcolumn=80
+" highlight ColorColumn ctermbg=235
 
 set shiftround " When at 3 spaces and I hit >>, go to 4, not 5.
 
@@ -182,6 +182,8 @@ set nofoldenable " Say no to code folding...
 
 " By default, vim thinks .md is Modula-2.
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+" hide markdown error highlighting
+syn match markdownError "\w\@<=\w\@="
 
 " Without this, vim breaks in the middle of words when wrapping
 autocmd FileType markdown setlocal nolist wrap lbr
