@@ -162,7 +162,7 @@ map K <Nop>
 
 " add black line to mark 80/column
 set colorcolumn=80
-highlight ColorColumn ctermgb=233
+highlight ColorColumn ctermbg=233
 
 " leader mappings 
 
