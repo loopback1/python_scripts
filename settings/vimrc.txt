@@ -143,6 +143,10 @@ set ttimeoutlen=1
 set wildignore+=*.a,*.o
 set wildignore+=*.bmp,*.jpg,*.png,*.gif
 set wildignore+=*.swp,*.mp4,*.mp3,*.avi
+set wildignore+=tmp/**
+
+" Highlight the status line
+highlight StatusLine ctermfg=blue ctermbg=yellow
 
 " create temp directory
 
@@ -150,9 +154,14 @@ set wildignore+=*.swp,*.mp4,*.mp3,*.avi
 set pastetoggle=<F2>
 set clipboard=unnamed
 
+" Quickfix management
+map <Space><Space> :ccl<cr>
 
 " dont clutter my dirs with tmp and swp files | mkdir -p ~/.tmp
 set directory=~/.tmp
+set backupdir=~/.tmp
+
+set autoread
 
 " set gutter background to black
 highlight SignColumn ctermbg=black
