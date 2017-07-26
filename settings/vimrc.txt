@@ -73,9 +73,9 @@ nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " auto close brackets, parenthesis etc
-inoremap ( ()<Esc>i
-inoremap [ []<Esc>i
-inoremap { {}<Esc>i
+" inoremap ( ()<Esc>i
+" inoremap [ []<Esc>i
+" inoremap { {}<Esc>i
 
 " encryption use :X to set encryption key :set key= , to reset"
 set cm=blowfish2
@@ -92,7 +92,7 @@ set showcmd
 set incsearch
 
 " better line wrapping
-set lbr
+" set lbr
 
 " set autoindent
 "set ai
@@ -150,12 +150,8 @@ set wildignore+=*.swp,*.mp4,*.mp3,*.avi
 set pastetoggle=<F2>
 set clipboard=unnamed
 
-" Automatically create .backup directory, writable by the group.
-" if filewritable(".") && ! filewritable("~/.tmp")
-"   silent execute '!umask 002; mkdir ~/.tmp'
-" endif
 
-" dont clutter my dirs with tmp and swp files
+" dont clutter my dirs with tmp and swp files | mkdir -p ~/.tmp
 set directory=~/.tmp
 
 " set gutter background to black
@@ -163,6 +159,10 @@ highlight SignColumn ctermbg=black
 
 " disable this keys
 map K <Nop>
+
+" add black line to mark 80/column
+set colorcolumn=80
+highlight ColorColumn ctermgb=233
 
 " leader mappings 
 
