@@ -171,10 +171,22 @@ map K <Nop>
 
 " add black line to mark 80/column
 set colorcolumn=80
-highlight ColorColumn ctermbg=233
+highlight ColorColumn ctermbg=235
+
+set shiftround " When at 3 spaces and I hit >>, go to 4, not 5.
+
+set nofoldenable " Say no to code folding...
+
+" Display extra whitespace
+" set list listchars=tab:»·,trail:·
+
+" By default, vim thinks .md is Modula-2.
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+" Without this, vim breaks in the middle of words when wrapping
+autocmd FileType markdown setlocal nolist wrap lbr
 
 " leader mappings 
-
 map <Leader>gw :!git add . && git commit -m 'updating stuff' && git push<cr>
 map <Leader>bp :!bpython -i %<cr>
 map <Leader>sh :sh 
