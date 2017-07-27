@@ -1,3 +1,18 @@
+" SETUP BEGIN
+" mkdir -p ~/.vim/bundle && mkdir -p ~/.tmp && mkdir -p ~/Dropbox/notes
+" mkdir -p ~/.vim/UltiSnips
+" 
+" sudo apt install build-essential libssl-dev libffi-dev python-dev
+" sudo apt install cmake python-dev3
+"
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+"
+" cd ~/.vim/bundle/YouCompleteMe
+" ./install.py --clang-completer
+"
+"
+"
+"
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -44,6 +59,7 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+" mkdir -p ~/.vim/UltiSnips
 let g:UltiSnipsSnippetDirectories=['~/.vim/UltiSnips', 'UltiSnips']
 let g:UltiSnipsEditSplit="vertical"
 
@@ -204,6 +220,7 @@ autocmd FileType markdown setlocal nolist wrap lbr
 
 " leader mappings 
 map <Leader>gw :!git add . && git commit -m 'updating stuff' && git push<cr>
+map <Leader>ws :silent w !sudo tee % > /dev/null<cr>
 map <Leader>bp :!bpython -i %<cr>
 map <Leader>sh :sh 
 map <Leader>dr :e ~/Dropbox<cr>
