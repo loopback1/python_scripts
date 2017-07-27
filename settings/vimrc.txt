@@ -15,16 +15,29 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/indentpython.vim'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'Yggdroot/indentLine'
 Plugin 'tpope/vim-surround'
 Plugin 'wincent/command-t'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'ervandew/supertab'
 "Plugin 'christoomey/vim-tmux-navigator'
-" Track the engine
-"Plugin 'SirVer/ultisnips'
+
+" allow ultisnips YCM and supertab integration
+Plugin 'SirVer/ultisnips'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'ervandew/supertab'
+" allow ultisnips YCM and supertab integration
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
 
 " color theme
 Plugin 'nanotech/jellybeans.vim'
