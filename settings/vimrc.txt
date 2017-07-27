@@ -21,7 +21,10 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'tpope/vim-surround'
 Plugin 'wincent/command-t'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'ervandew/supertab'
 "Plugin 'christoomey/vim-tmux-navigator'
+" Track the engine
+"Plugin 'SirVer/ultisnips'
 
 " color theme
 Plugin 'nanotech/jellybeans.vim'
