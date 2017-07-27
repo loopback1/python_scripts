@@ -33,7 +33,6 @@ Plugin 'nanotech/jellybeans.vim'
 
 " plugins above this line
 call vundle#end()            " required
-filetype plugin indent on
 
 
 " make YCM compatible with UltiSnips (using supertab)
@@ -45,14 +44,17 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-let g:UltiSnipsSnippetsDir = '~/.vim/bundle/dm-snippets/UltiSnips'
-
+let g:UltiSnipsSnippetDirectories=['~/.vim/UltiSnips', 'UltiSnips']
+let g:UltiSnipsEditSplit="vertical"
 
 " AirlineTheme
 let g:airline_theme='powerlineish'
 " let g:airline_theme='bubblegum'
 
+filetype plugin indent on
+
 set shiftwidth=4
+
 "set expandtab
 set number
 " set relativenumber
