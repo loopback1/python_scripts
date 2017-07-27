@@ -23,40 +23,42 @@ Plugin 'jiangmiao/auto-pairs'
 "Plugin 'christoomey/vim-tmux-navigator'
 
 " allow ultisnips YCM and supertab integration
-
-Plugin 'SirVer/ultisnips'
-"Plugin 'Valloric/YouCompleteMe'
-Plugin 'ervandew/supertab'
-
-" make YCM compatible with UltiSnips (using supertab)
-" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-" let g:SuperTabDefaultCompletionType = '<C-n>'
-
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-let g:UltiSnipsSnippetsDir = '~/.vim/bundle/dm-snippets/UltiSnips'
+Bundle 'ervandew/supertab'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 " color theme
 Plugin 'nanotech/jellybeans.vim'
 
 " plugins above this line
 call vundle#end()            " required
+filetype plugin indent on
+
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsSnippetsDir = '~/.vim/bundle/dm-snippets/UltiSnips'
+
 
 " AirlineTheme
 let g:airline_theme='powerlineish'
 " let g:airline_theme='bubblegum'
 
 set shiftwidth=4
-set expandtab
+"set expandtab
 set number
 " set relativenumber
 set laststatus=2
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:.
 syntax on
-filetype plugin indent on
 
 " vim-airline 
 let g:airline_powerline_fonts = 1
@@ -118,8 +120,6 @@ set incsearch
 " tell vim what background you have for proper syntax highlighting
 " set bg=light
 " set bg=dark
-
-" color slate, set color scheme
 "
 " map KEY strokes
 " map <F2> itest<CR>  
@@ -150,7 +150,7 @@ let mapleader = ","
 
 set viminfo+=!
 set autoindent
-set smarttab
+" set smarttab
 set noesckeys
 set ttimeout
 set ttimeoutlen=1
@@ -163,8 +163,6 @@ set wildignore+=tmp/**
 
 " Highlight the status line
 highlight StatusLine ctermfg=blue ctermbg=yellow
-
-" create temp directory
 
 " better copy & paste
 set pastetoggle=<F2>
