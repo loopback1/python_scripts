@@ -1,17 +1,23 @@
-" SETUP BEGIN
+" NEW SETUP BEGIN
+"
 " mkdir -p ~/.vim/bundle && mkdir -p ~/.tmp && mkdir -p ~/Dropbox/notes
 " mkdir -p ~/.vim/UltiSnips
 " 
 " sudo apt install build-essential libssl-dev libffi-dev python-dev
 " sudo apt install cmake python-dev3
-"
+" sudo apt-get install ruby ruby-dev libncurses5-dev mercurial clone build-essential rake
+" 
 " git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+"
+" cd ~/.vim/bundle/command-t
+" rake make
 "
 " cd ~/.vim/bundle/YouCompleteMe
 " ./install.py --clang-completer
 "
 "
 "
+" NEW SETUP END
 "
 set nocompatible              " be iMproved, required
 filetype off                  " required
