@@ -49,8 +49,8 @@ def get_ips(ip_file):
 
 def generate_ip_prefix(prefix, start_range, end_range):
     ''' 
-    return a list of the first 2 octecs
-    e.g. [ '10.240', '10.241' ] by combiging prefix + start_range (to end_range)
+    return a list of the first 2 octecs, by combiging prefix + start_range (to end_range)
+    e.g. [ '10.240', '10.241' ] 
     '''
     my_list = [str(prefix) + '.' + str(x) for x in range(start_range, end_range)]
     return my_list
