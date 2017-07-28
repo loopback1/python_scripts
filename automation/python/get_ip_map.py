@@ -9,7 +9,21 @@
 import sys
 import toolbox
 
+if len(sys.argv) < 1:
+    print ' usage: ' + sys.argv[0] + ' ip.txt' 
+    print 'ip.txt must contain two fields: \
+           xxxxxx 10.1.1.x \
+           no spaces allowed on f2 \
+    '
+
 file = sys.argv[1]
+
+# create two list to zip as key, values to a dictionary
+real_prefix = toolbox.generate_ip_prefix(10,16,32)
+nat_prefix = toolbox.generate_ip_prefix(30,240,256)
+
+# zip two list and return dictionary
+nat_d = dict(zip(real_prefix, nat_prefix))
 
 def compare_to_dictonary(line):
     '''
@@ -32,14 +46,6 @@ def write_to_file(write_list):
             f.write(line + '\n')
 
 def main():
-
-    # create two list to zip as key, values to a dictionary
-    real_prefix = toolbox.generate_ip_prefix(10,16,32)
-    nat_prefix = toolbox.generate_ip_prefix(30,240,256)
-
-    # zip two list and return dictionary
-    nat_d = dict(zip(real_prefix, nat_prefix))
-
     with open(file, 'r') as f:
         write_list = [compare_to_dictonary(x) for x in f]
     write_to_file(write_list)
