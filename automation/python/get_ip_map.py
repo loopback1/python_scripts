@@ -8,7 +8,6 @@
 
 import sys
 import toolbox
-import re
 
 file = sys.argv[1]
 
