@@ -20,12 +20,6 @@ if len(sys.argv) < 1:
 
 file = sys.argv[1]
 
-# create two list to zip as key, values to a dictionary
-real_prefix = toolbox.generate_ip_prefix(10,16,32)
-nat_prefix = toolbox.generate_ip_prefix(30,240,256)
-
-# zip two list and return dictionary
-nat_d = dict(zip(real_prefix, nat_prefix))
 
 
 def clean_ip(ip):
@@ -65,4 +59,10 @@ def main():
     write_to_file(write_list)
     
 if __name__ == '__main__':
+    # create two list to zip as key, values to a dictionary
+    real_prefix = toolbox.generate_ip_prefix(10,16,32)
+    nat_prefix = toolbox.generate_ip_prefix(30,240,256)
+
+    # zip two list and return dictionary
+    nat_d = dict(zip(real_prefix, nat_prefix))
     main()
