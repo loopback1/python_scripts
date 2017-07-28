@@ -12,18 +12,6 @@ import re
 
 file = sys.argv[1]
 
-# create two list to zip as key, values to a dictionary
-real_prefix = toolbox.generate_ip_prefix(10,16,32)
-nat_prefix = toolbox.generate_ip_prefix(30,240,256)
-
-# zip two list and return dictionary
-nat_d = dict(zip(real_prefix, nat_prefix))
-
-# x = 'SDD01223223 10.16.10.15'
-
-def ip_clean_up(ip):
-    return re.sub(' ','_', ip)
-
 def compare_to_dictonary(line):
     '''
     make sure line is clean and there are only two fields:
@@ -45,6 +33,14 @@ def write_to_file(write_list):
             f.write(line + '\n')
 
 def main():
+
+    # create two list to zip as key, values to a dictionary
+    real_prefix = toolbox.generate_ip_prefix(10,16,32)
+    nat_prefix = toolbox.generate_ip_prefix(30,240,256)
+
+    # zip two list and return dictionary
+    nat_d = dict(zip(real_prefix, nat_prefix))
+
     with open(file, 'r') as f:
         write_list = [compare_to_dictonary(x) for x in f]
     write_to_file(write_list)
