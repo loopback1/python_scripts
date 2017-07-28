@@ -8,6 +8,8 @@
 
 import sys
 import toolbox
+import re
+
 
 if len(sys.argv) < 1:
     print ' usage: ' + sys.argv[0] + ' ip.txt' 
@@ -25,14 +27,26 @@ nat_prefix = toolbox.generate_ip_prefix(30,240,256)
 # zip two list and return dictionary
 nat_d = dict(zip(real_prefix, nat_prefix))
 
+
+def clean_ip(ip):
+    r  = re.search('([0-9]{1,3}\.[0-9]{1,3})(\.[0-9]{1,3}\.[0-9]{1,3})', ip)
+    firstpart = r.group(1)
+    secondpart = r.group(2)
+    return firstpart, secondpart 
+
 def compare_to_dictonary(line):
     '''
     make sure line is clean and there are only two fields:
     ABCDEFG 1.2.3.4
     spaces in f2 will break this function
     '''
-    tid, ip = line.split()
-    firstpart, secondpart = ip[:len(ip) / 2], ip[len(ip) /2:]
+    tid, ip = line.split(',')
+    tid = tid.strip()
+    ip = ip.strip()
+    if not ip:
+        ip == 'n/a'
+    # firstpart, secondpart = ip[:len(ip) / 2], ip[len(ip) /2:]
+    firstpart, secondpart = clean_ip(ip)
     if firstpart in nat_d.keys():
         nat_ip = nat_d[firstpart] + secondpart
         new_line = tid + "," + ip + "," + nat_ip
