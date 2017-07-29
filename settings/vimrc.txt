@@ -171,11 +171,8 @@ nmap j gj
 " colorscheme
 colorscheme jellybeans
 let g:jellybeans_overrides = {
-	    \    'background': { 'guibg': '000000'  },
+\    'background': { 'ctermbg': 'none', '256ctermbg': 'none'},
 \}
-let g:jellybeans_use_lowcolor_black = 0
-highlight Normal guibg=black ctermbg=None
-
 let mapleader = ","
 
 set viminfo+=!
