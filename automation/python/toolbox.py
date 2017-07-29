@@ -45,3 +45,7 @@ def get_ips(ip_file):
     '''
     with open(ip_file) as f:
         return [x.strip() for x in f]
+
+
+if __name__ == '__main__':
+    print('test')    
