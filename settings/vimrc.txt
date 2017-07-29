@@ -15,7 +15,8 @@
 " cd ~/.vim/bundle/YouCompleteMe
 " ./install.py --clang-completer
 "
-"
+" vim .vim/bundle/jellybeans.vim/colors/jellybeans.vim
+" 	change line 80: let s:background_color = "000000" (black)
 "
 " NEW SETUP END
 "
@@ -172,6 +173,8 @@ colorscheme jellybeans
 let g:jellybeans_overrides = {
 	    \    'background': { 'guibg': '000000'  },
 \}
+let g:jellybeans_use_lowcolor_black = 0
+highlight Normal guibg=black ctermbg=None
 
 let mapleader = ","
 
