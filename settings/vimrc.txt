@@ -70,8 +70,8 @@ let g:UltiSnipsSnippetDirectories=['~/.vim/UltiSnips', 'UltiSnips']
 let g:UltiSnipsEditSplit="vertical"
 
 " AirlineTheme
-let g:airline_theme='powerlineish'
-" let g:airline_theme='bubblegum'
+" let g:airline_theme='powerlineish'
+let g:airline_theme='bubblegum'
 
 filetype plugin indent on
 
@@ -169,6 +169,9 @@ nmap j gj
 
 " colorscheme
 colorscheme jellybeans
+let g:jellybeans_overrides = {
+	    \    'background': { 'guibg': '000000'  },
+\}
 
 let mapleader = ","
 
@@ -235,3 +238,4 @@ map <Leader>pn :e ~/Dropbox/notes/personal-notes.md<cr>
 map <Leader>wn :e ~/Dropbox/notes/work-notes.md<cr>
 map <Leader>sn :e ~/Dropbox/notes/speed-notes.md<cr>
 map <Leader>cn :e ~/Dropbox/notes/current-project-notes.md<cr>
+map <F7> mzgg=G`z
