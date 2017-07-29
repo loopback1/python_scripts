@@ -47,5 +47,15 @@ def get_ips(ip_file):
         return [x.strip() for x in f]
 
 
+<<<<<<< HEAD
 if __name__ == '__main__':
     print('test')    
+=======
+def generate_ip_prefix(prefix, start_range, end_range):
+    ''' 
+    return a list of the first 2 octecs, by combiging prefix + start_range (to end_range)
+    e.g. [ '10.240', '10.241' ] 
+    '''
+    my_list = [str(prefix) + '.' + str(x) for x in range(start_range, end_range)]
+    return my_list
+>>>>>>> b30c67184f2aeeda7f42b2d0bb7f318ccdeb56de
