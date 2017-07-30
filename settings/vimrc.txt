@@ -1,5 +1,5 @@
 " NEW SETUP BEGIN
-"
+" gnome-terminal font: inconsolas for powerline medium size 15
 " mkdir -p ~/.vim/bundle && mkdir -p ~/.tmp && mkdir -p ~/Dropbox/notes
 " mkdir -p ~/.vim/UltiSnips
 " 
@@ -37,7 +37,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 " Plugin 'vim-scripts/indentpython.vim'
-Plugin 'vim-syntastic/syntastic'
+" Plugin 'vim-syntastic/syntastic'
 Plugin 'Yggdroot/indentLine'
 Plugin 'tpope/vim-surround'
 Plugin 'wincent/command-t'
@@ -229,6 +229,7 @@ autocmd FileType markdown setlocal nolist wrap lbr
 
 " leader mappings 
 map <Leader>gw :!git add . && git commit -m 'updating stuff' && git push<cr>
+map <Leader>gs :!git status<cr>
 map <Leader>ws :silent w !sudo tee % > /dev/null<cr>
 map <Leader>bp :!bpython -i %<cr>
 map <Leader>sh :sh 
