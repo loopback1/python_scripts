@@ -19,9 +19,12 @@
 " 	change line 80: let s:background_color = "000000" (black)
 "
 " NEW SETUP END
-"
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" 
+" be iMproved, required
+set nocompatible  
+
+" required
+filetype off      
 
 " set the runtime path to include Vundle and initialize
 
@@ -29,7 +32,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
 
-" core plugins
+				" core plugins
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -37,7 +40,7 @@ Plugin 'wincent/command-t'
 Bundle 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
-" main plugins
+				" main plugins
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'vim-syntastic/syntastic'
@@ -54,13 +57,19 @@ Bundle 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 
 " plugins above this line
-call vundle#end()            " required
+" required
+call vundle#end()            
 
+			      " Plugin settings
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" YouCompleteMe
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
@@ -69,34 +78,6 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 " mkdir -p ~/.vim/UltiSnips
 let g:UltiSnipsSnippetDirectories=['~/.vim/UltiSnips', 'UltiSnips']
 let g:UltiSnipsEditSplit="vertical"
-
-" AirlineTheme
-" let g:airline_theme='powerlineish'
-let g:airline_theme='bubblegum'
-
-" filetype plugin indent on
-
-set shiftwidth=4
-
-"set expandtab
-set number
-" set relativenumber
-set laststatus=2
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:.
-syntax on
-
-" vim-airline 
-let g:airline_powerline_fonts = 1
-
-" command-t max files to search
-let g:CommandTMaxFiles=200000
-
-" nerdtree
-map <C-\> :NERDTreeToggle<CR>
-
-" YouCompleteMe
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
 
 " Syntastic
 set statusline+=%#warningmsg#
@@ -107,9 +88,24 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" file specific here 
-" YMAL indentation 
+" let g:airline_theme='powerlineish'
+let g:airline_theme='bubblegum'
 
+let g:jellybeans_overrides = {
+\    'background': { 'ctermbg': 'none', '256ctermbg': 'none'},
+\}
+
+" vim-airline 
+let g:airline_powerline_fonts = 1
+
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:.
+
+" command-t max files to search
+let g:CommandTMaxFiles=200000
+
+			     " file specific here 
+
+" YMAL indentation 
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 " add key mappings here
 
@@ -119,27 +115,8 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " Without this, vim breaks in the middle of words when wrapping
 autocmd FileType markdown setlocal nolist wrap lbr
 
-" python - F9 to execute python script
-nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
-
-" auto close brackets, parenthesis etc
-" inoremap ( ()<Esc>i
-" inoremap [ []<Esc>i
-" inoremap { {}<Esc>i
-
 " encryption use :X to set encryption key :set key= , to reset"
 set cm=blowfish2
-
-" default register size bump"
-set viminfo='20,<1000,s1000
-set t_Co=256
-
-
-" show incomplete commands as they are typed, e.x. 2yy
-set showcmd
-
-" set incremental search, highlights you are searching
-set incsearch
 
 " set autoindent
 "set ai
@@ -150,13 +127,6 @@ set incsearch
 " set bg=light
 " set bg=dark
 
-" allow switching buffers with out saving first
-set hidden
-
-"affects conceal level for quotes etc in files such as json.
-set cole=0
-au FileType * setl cole=0
-
 " change C-a and C-x behavior to use decimal and ignore octal
 " additon and subtraction
 
@@ -164,28 +134,14 @@ set nrformats-=octal
 
 runtime macros/matchit.vim
 
-filetype plugin indent on    " required
+" required
+filetype plugin indent on  
 
 " IndentLine enabled by default
 let g:indentLine_enabled = 1
 
-imap jk <ESC>
-nmap k gk
-nmap j gj
-
 " colorscheme
 colorscheme jellybeans
-let g:jellybeans_overrides = {
-\    'background': { 'ctermbg': 'none', '256ctermbg': 'none'},
-\}
-let mapleader = ","
-
-set viminfo+=!
-set autoindent
-" set smarttab
-set noesckeys
-set ttimeout
-set ttimeoutlen=1
 
 " ignore this in searches
 set wildignore+=*.a,*.o
@@ -198,37 +154,66 @@ highlight StatusLine ctermfg=blue ctermbg=yellow
 
 " better copy & paste
 set pastetoggle=<F2>
-set clipboard=unnamed
 
-" Quickfix management
-map <Space><Space> :ccl<cr>
+			       " core settings
 
 " dont clutter my dirs with tmp and swp files | mkdir -p ~/.tmp
 set directory=~/.tmp
 set backupdir=~/.tmp
-
+set clipboard=unnamed
 " refresh file automatically
 set autoread
-
+" allow switching buffers with out saving first
+set hidden
+" set incremental search, highlights you are searching
+set incsearch
+set shiftwidth=4
+" set expandtab
+set number
+" set relativenumber
+set laststatus=2
 " set gutter background to black
 highlight SignColumn ctermbg=black
+syntax on
+set viminfo+=!
+set autoindent
+" set smarttab
+set noesckeys
+set ttimeout
+set ttimeoutlen=1
+" add black line to mark 80/column
+" set colorcolumn=80
+" highlight ColorColumn ctermbg=235
+set shiftround " When at 3 spaces and I hit >>, go to 4, not 5.
+set nofoldenable " Say no to code folding...
+" default register size bump"
+set viminfo='20,<1000,s1000
+set t_Co=256
+" show incomplete commands as they are typed, e.x. 2yy
+set showcmd
+" Display extra whitespace
+" set list listchars=tab:»·,trail:·
+
+			     " Key mappings here
+imap jk <ESC>
+nmap k gk
+nmap j gj
+
+" nerdtree
+map <C-\> :NERDTreeToggle<CR>
+
+" python - F9 to execute python script
+nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
+
+" Quickfix management
+map <Space><Space> :ccl<cr>
 
 " disable this keys
 map K <Nop>
 
-" add black line to mark 80/column
-" set colorcolumn=80
-" highlight ColorColumn ctermbg=235
+			      " leader mappings 
 
-set shiftround " When at 3 spaces and I hit >>, go to 4, not 5.
-
-set nofoldenable " Say no to code folding...
-
-" Display extra whitespace
-" set list listchars=tab:»·,trail:·
-
-
-" leader mappings 
+let mapleader = ","
 map <Leader>gw :!git add . && git commit -m 'updating stuff' && git push<cr>
 map <Leader>gs :!git status<cr>
 map <Leader>ws :silent w !sudo tee % > /dev/null<cr>
