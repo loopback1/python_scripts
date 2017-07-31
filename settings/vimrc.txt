@@ -135,9 +135,6 @@ set showcmd
 " set incremental search, highlights you are searching
 set incsearch
 
-" better line wrapping
-" set lbr
-
 " set autoindent
 "set ai
 " set smart indent, useful for coding
@@ -153,6 +150,10 @@ set incsearch
 
 set hidden
 
+"affects conceal level for quotes etc in files such as json.
+set cole=0
+au FileType * setl cole=0
+
 " change C-a and C-x behavior to use decimal and ignore octal
 " additon and subtraction
 
@@ -165,7 +166,7 @@ filetype plugin indent on    " required
 " IndentLine enabled by default
 let g:indentLine_enabled = 1
 
-imap jj <ESC>
+imap jk <ESC>
 nmap k gk
 nmap j gj
 
