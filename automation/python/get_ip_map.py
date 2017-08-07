@@ -11,13 +11,9 @@ import toolbox
 import re
 
 
-if len(sys.argv) < 1:
-    print ' usage: ' + sys.argv[0] + ' ip.txt' 
-    print 'ip.txt must contain two fields: \
-           xxxxxx 10.1.1.x \
-           no spaces allowed on f2 \
-    '
-
+# if len(sys.argv) < 1:
+#     print ' usage: ' + sys.argv[0] + ' ip.txt' 
+# 
 file = sys.argv[1]
 
 
