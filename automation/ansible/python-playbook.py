@@ -42,8 +42,7 @@ class Item(Resource):
         if name == 'clear_vpn':
             job_output = run_clear_vpn()
             return {"message": "DONE!"}, 200
-        else:
-            return {"message": "something went wrong..."}, 200
+        return {"message": "something went wrong..."}, 200
 
 # create API Resources
 api.add_resource(Item, '/job=/<string:name>')
