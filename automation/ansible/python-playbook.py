@@ -19,7 +19,7 @@ app = Flask(__name__)
 # wrap app into an api
 api = Api(app)
 
-# create list to store dictionaries
+# run playbook here
 def run_clear_vpn():
     '''
     run my playbook from command line
