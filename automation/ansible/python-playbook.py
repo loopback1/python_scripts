@@ -20,9 +20,9 @@ app = Flask(__name__)
 api = Api(app)
 
 # create list to store dictionaries
-
 def run_clear_vpn():
     '''
+    run my playbook from command line
     assumes that -i is a dynamic inventory
     '''
     p = subprocess.Popen('ansible-playbook -f 40 -i clear_vpn_inv.py clear__vpn.yml',
@@ -30,20 +30,14 @@ def run_clear_vpn():
                          stdout=subprocess.PIPE,
                          stderr=subprocess.STDOUT
                 )
-    job_output = [] 
     for line in p.stdout.readlines():
-            # line1 = ansi_escape.sub('', line)
             print line,
-            # job_output.append(line1)
             retval = p.wait()
     return 
 
 # create Item class and inherit Resource flask class
 class Item(Resource):
     def post(self, name):
-        '''
-        my ansible playbook api
-        '''
         data = request.get_json()
         if name == 'clear_vpn':
             job_output = run_clear_vpn()
@@ -54,7 +48,6 @@ class Item(Resource):
 # create API Resources
 api.add_resource(Item, '/job=/<string:name>')
 
-# debug=True enables better error messages
 # port=5000 is default and does not need to be identified
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=5000, debug=True)
