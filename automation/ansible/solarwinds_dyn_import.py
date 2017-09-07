@@ -32,7 +32,11 @@ if not verify:
 swis = SwisClient(npm_server, username, password)
 
 
-results = swis.query( "SELECT TOP 1000 IPAddress FROM Orion.Nodes I WHERE I.CustomProperties.DEVICE_TYPE = " + device_type )
+results = swis.query( "SELECT TOP 1000 IPAddress FROM Orion.Nodes I WHERE Status = '2' AND I.CustomProperties.DEVICE_TYPE = " + device_type )
+
+# results = swis.query( "SELECT TOP 1000 I.CustomProperties.ATM_OOB_IP FROM Orion.Nodes I WHERE Status = '2' AND I.CustomProperties.ATM_CLIENT_NAME = " + other_value )
+
+# results = swis.query( "SELECT TOP 1000 I.CustomProperties.ATM_OOB_IP FROM Orion.Nodes I WHERE Status = '2' AND I.CustomProperties.ATM_CLIENT_NAME = " + some_value )
 
 data = {'_meta': {'hostvars': {}}, 'hosts' : []} 
 
