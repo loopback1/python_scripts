@@ -39,7 +39,7 @@ def create_node(device_ip, ip_address, oob_ip_address):
     # add extra custom properites :D
     custom_props = {
         'ATM_OOB_IP': oob_ip_address,
-        'ATM_CLIENT_NAME': '711 Scotia VPN',
+        'ATM_CLIENT_NAME': 'solarwinds group here',
     }
     
     for k,v in custom_props.items():
