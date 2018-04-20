@@ -15,7 +15,6 @@ import re
 import signal
 
 signal.signal(signal.SIGPIPE, signal.SIG_DFL)  # IOerror on broken pipe
-
 signal.signal(signal.SIGINT, signal.SIG_DFL) # hanlde keyboard interrupt and exit
 
 
