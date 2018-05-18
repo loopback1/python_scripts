@@ -5,7 +5,7 @@ requires python3
 
 usage:
 
-python3 calc-line-overhead.py $1 $2 $3
+python3 calc_line_overhead.py $1 $2 $3
 
     $1 = line speed in mbps
     $2 = average packet size expected
@@ -15,7 +15,7 @@ use whole numbers!
 
 example:
 
-    python calc-line-overhead.py 500 128 18
+    python calc_line_overhead.py 500 128 18
 
 500 = 500Mbps
 128 = 128 byte avg packet size expected
@@ -71,7 +71,7 @@ requires python3
 
 usage:
 
-python3 calc-line-overhead.py $1 $2 $3
+python3 calc_line_overhead.py $1 $2 $3
 
     $1 = line speed in mbps
     $2 = average packet size expected
@@ -81,7 +81,7 @@ use whole numbers!
 
 example:
 
-    python calc-line-overhead.py 500 128 18
+    python calc_line_overhead.py 500 128 18
 
 500 = 500Mbps
 128 = 128 byte avg packet size expected
