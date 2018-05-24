@@ -101,4 +101,7 @@ if __name__ == '__main__':
             calc_ethernet_overhead(int(sys.argv[1]), int(
                 sys.argv[2]), int(sys.argv[3]))
     except Exception as e:
+        print("error:\n")
         print(e)
+        print("\n")
+        print(my_help)
