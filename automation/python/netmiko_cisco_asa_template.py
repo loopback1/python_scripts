@@ -30,14 +30,14 @@ def my_function(i):
     try:
         connection = netmiko.ConnectHandler(ip=i, device_type='cisco_asa', username=username, password=password,
                                             secret=password)
-      
+
         hostname = connection.find_prompt()
         connection.config_mode()
         x = connection.send_command('sh run ssh | i 10.x.y.z')
         x = connection.send_command('no logging host Inside 1.2.2.2')
         connection.disconnect()
         print '%s: %s' % (hostname, 'done')
-      
+
     except Exception as e:
         print '%s: %s' % (i, e)
 

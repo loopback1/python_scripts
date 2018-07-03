@@ -15,7 +15,8 @@ import re
 import signal
 
 signal.signal(signal.SIGPIPE, signal.SIG_DFL)  # IOerror on broken pipe
-signal.signal(signal.SIGINT, signal.SIG_DFL) # hanlde keyboard interrupt and exit
+# hanlde keyboard interrupt and exit
+signal.signal(signal.SIGINT, signal.SIG_DFL)
 
 
 device_type = 'cisco_ios'
@@ -32,13 +33,13 @@ device_ip = '''
 '''.strip().splitlines()
 """
 
-device_ip = toolbox.get_ips('ip.list.txt')
-
+device_ip = toolbox.get_ips('router_list.cfg')
 
 
 def my_function(i):
     try:
-        connection = netmiko.ConnectHandler(ip=i, device_type=device_type, username=username, password=password)
+        connection = netmiko.ConnectHandler(
+            ip=i, device_type=device_type, username=username, password=password)
         # add global delay to slow devices requiring longer delay: global_delay_factor=60
 
         hostname = connection.find_prompt()
@@ -62,6 +63,7 @@ def my_function(i):
             print '%s: %s --> done' % (hostname, i)
     except Exception as e:
         print '%s: %s\n\n' % (i, e)
+
 
 # define number of threads to fire up at once
 pool = Pool(16)

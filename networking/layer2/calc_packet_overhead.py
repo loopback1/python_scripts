@@ -19,7 +19,7 @@ example:
 
 500 = 500Mbps
 128 = 128 byte avg packet size expected
-18 = 14 byte ethernet header + 4 byte FCS frame(CRC32), dot1q = +4 bytes (22)
+18 = 14 byte ethernet header + 4 byte FCS frame (CRC), if using dot1q = +4 bytes (22)
 
 '''
 # jose lima  5.19.2018
@@ -27,9 +27,8 @@ example:
 import sys
 
 
-def calc_ethernet_overhead(raw_line_throughput, avg_packet_size, overhead):
-    ''' Calculates maximun thoughput on a line including additonal L2/ethernet overhead \
-    and returns appropiate shaping policy based on the addtional overhead expected.
+def calc_overhead(raw_line_throughput, avg_packet_size, overhead):
+    ''' Calculates maximun thoughput on a line including additonal L2/ethernet overhead.
 
     variable definitions:
 
@@ -37,35 +36,42 @@ def calc_ethernet_overhead(raw_line_throughput, avg_packet_size, overhead):
         avg_packets_size = avg packet size expected on this line
         overhead = type of overhead e.g. ethernet = (14 byte header + 4 byte FCS)
 
+    returns:
+         QoS shaping policy required to stay in boundaries of raw_line_throughput.
+
     '''
+    # line speed in megabits/sec
+    line_rate_bits = raw_line_throughput * (1000 * 1000)
 
-    line_rate_bits = raw_line_throughput * 1000 * 1000
-
+    # packet size in bits including header(s)
     packet_size_bits = (avg_packet_size + overhead) * 8
 
+    # max packets/sec that can be sent on this link
     max_packets_per_second = line_rate_bits / packet_size_bits
 
+    # max througput for avg_packet_size in megabits/sec
     max_throughput = max_packets_per_second * \
         avg_packet_size * 8 / (1000 * 1000)
 
+    # percentage of usable bandwidth
     effective_percentage = (max_throughput / raw_line_throughput) * 100
 
-    # calcuate total throughput with overhead
+    # total throughput with overhead
     total_including_overhead = raw_line_throughput + \
         (raw_line_throughput - max_throughput)
 
     # overhead_bits = total_including_overhead - int(raw_line_throughput)
     overhead_bits = total_including_overhead - raw_line_throughput
 
-    return print("Line speed: {} Mbps\n \
+    return print("\nLine speed: {} Mbps\n \
     Avg packet size expected on this line: {} Bytes\n \
     Overhead using this packet size at full speed: ~ {} Mbps\n \
     Percentage available for use: {} %\n \
     QoS shaping policy needed to stay in boundaries: {} Mbps\n".format(raw_line_throughput,
                                                                        avg_packet_size, round(
                                                                            overhead_bits, 2),
-                                                                       int(
-                                                                           effective_percentage),
+                                                                       round(
+                                                                           effective_percentage, 2),
                                                                        round(max_throughput, 2)))
 
 
@@ -89,7 +95,7 @@ example:
 
 500 = 500Mbps
 128 = 128 byte avg packet size expected
-18 = 14 byte ethernet header + 4 byte FCS frame(CRC32), dot1q = +4 bytes
+18 = 14 byte ethernet header + 4 byte FCS (frame CRC), if using dot1q +4 bytes (22)
 
 '''
 
@@ -98,7 +104,7 @@ if __name__ == '__main__':
         if len(sys.argv) <= 3:
             print(my_help)
         else:
-            calc_ethernet_overhead(int(sys.argv[1]), int(
+            calc_overhead(int(sys.argv[1]), int(
                 sys.argv[2]), int(sys.argv[3]))
     except Exception as e:
         print("error:\n")
