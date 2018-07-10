@@ -1,6 +1,8 @@
 #!/home/jlima/.virtualenvs/prod3/bin/python
 '''basic request script to automate login to freedns.afraid.org
 
+run as cronjob every few days
+
 ;)
 
 '''
