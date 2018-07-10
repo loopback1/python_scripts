@@ -1,10 +1,11 @@
 #!/home/jlima/.virtualenvs/prod3/bin/python
 '''update freedns.afraid.org account by login every few days
 sends sms to cell phone with status each week using gmail
-run as cronjob
 
-;)
 
+run as cron job every 1st day of the week @ 8am:
+
+0 8 * * 1 /home/jlima/configs/freedns.afraid.org.py > /tmp/freedns_autologin_status.log 2>&1 &
 
 '''
 import requests
