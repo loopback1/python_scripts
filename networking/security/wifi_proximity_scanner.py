@@ -39,7 +39,6 @@ def send_mail(body):
 def check_client_db(client, ssid):
     header = '\n\n' + str(time.ctime()) + '\n'
     if not client in client_db:
-#        client_db[client] = []
         client_db[client] = [ssid]
         body = header + 'new client: ' + client + ' -> ssid: ' + ssid
         send_mail(body)
