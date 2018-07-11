@@ -1,50 +1,66 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 '''
-listens for near by beacons and extracts client MAC and AP SSID
-used for knowing when cellphones are near by which are looking for APs to connect..
-someone walking by the property at night etc..
-will send sms text to cell phone using gmail..
+client SSID beacon sniffer
 
-requires aircrack-ng to put nic into monitor mode
+used to monitor night activity around the house from untrusted wifi clients.
+
+requires aircrack-ng + scapy and decent wifi nic to monitor for frames.
+
+maintains client database and trusted SSID list used to ignore clients looking for local APs (neighbors etc)
 
 '''
 import smtplib
-from scapy.all import *
 import time
+from scapy.all import *
+
+# known and trusted SSIDs
+trusted_ssid = ['ssid1', 'ssid2', 'ssid3']
+
+# init client db
+client_db = {}
+
+# log file
+log_file = '/home/path/to.log'
 
 def send_mail(body):
     try:
-        gmail_user = 'username@gmail.com'
-        gmail_password = 'password'
-        to = ['xxxxxxxx@mms.att.net']
+        gmail_user = 'xyz@gmail.com'
+        gmail_password = 'gmailpass'
+        to = ['xxxxxxx@mms.att.net']
         server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
         server.ehlo()
         server.login(gmail_user, gmail_password)
-        body = '\n\nnew wifi client:\n' + body + '\n\n'
         server.sendmail(gmail_user, to, body)
         server.close()
     except Exception as e:
         print(e)
 
-# known SSIDs near
-known_ssid = []
+def check_client_db(client, ssid):
+    header = '\n\n' + str(time.ctime()) + '\n'
+    if not client in client_db:
+        client_db[client] = []
+        client_db[client] = [ssid]
+        body = header + 'new client: ' + client + ' -> ssid: ' + ssid
+        send_mail(body)
+        print('{}: new client: {} -> ssid: {}'.format(str(time.ctime()),client,ssid))
+    elif client in client_db and ssid not in client_db[client]:
+        client_db[client].append(ssid)
+        body = header + 'repeat client: ' + client + ' ssids: ' + str(client_db[client])
+        send_mail(body)
+        print('{}: updating existing client: {} -> ssids: {}'.format(str(time.ctime()),client, client_db[client]))
 
-def Handler(pkt):
+
+def pkt_handler(pkt):
     if pkt.haslayer(Dot11):
         try:
-# ignore binary names/unicode
             if '\x00' in pkt.info:
                 pass
-            elif pkt.info not in known_ssid and len(pkt.info) > 0:
-                known_ssid.append(pkt.info)
-                body = str(time.ctime()) + '\n' + pkt.info + ' ' + pkt.addr2
-                send_mail(body)
-                print(pkt.info, pkt.addr2)
-                print(known_ssid)
+            elif pkt.info not in trusted_ssid and len(pkt.info) > 0:
+                with open(log_file, 'a') as f:
+                    f.write(time.strftime('%c') + ', ' + pkt.info + ', ' + pkt.addr2 + '\n')
+                check_client_db(pkt.addr2, pkt.info)
         except AttributeError:
             pass
 
-'''
-sudo airmon-ng start wlanX
-'''
-sniff(iface="mon0", count=0, prn=Handler, lfilter=lambda p: p.haslayer(Dot11Beacon) or p.haslayer(Dot11ProbeResp) or p.haslayer(Dot11ProbeReq), store=0)
+sniff(iface="mon0", count=0, prn=pkt_handler, lfilter=lambda p: p.haslayer(Dot11Beacon) or p.haslayer(Dot11ProbeResp) or p.haslayer(Dot11ProbeReq), store=0)
