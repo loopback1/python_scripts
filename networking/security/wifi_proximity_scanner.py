@@ -15,18 +15,18 @@ import time
 from scapy.all import *
 
 # known and trusted SSIDs
-trusted_ssid = ['ssid1', 'ssid2', 'ssid3']
+trusted_ssid = ['ssid1', 'ssid2']
 
 # init client db
 client_db = {}
 
 # log file
-log_file = '/home/path/to.log'
+log_file = '/home/xyz/wifi.beacon.log'
 
 def send_mail(body):
     try:
-        gmail_user = 'xyz@gmail.com'
-        gmail_password = 'gmailpass'
+        gmail_user = 'user@gmail.com'
+        gmail_password = 'pass'
         to = ['xxxxxxx@mms.att.net']
         server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
         server.ehlo()
@@ -36,18 +36,18 @@ def send_mail(body):
     except Exception as e:
         print(e)
 
-def check_client_db(client, ssid):
-    header = '\n\n' + str(time.ctime()) + '\n'
+def check_client_db(client, ssid, arrival_time):
+    header = '\n\n' + arrival_time + '\n'
     if not client in client_db:
         client_db[client] = [ssid]
-        body = header + 'new client: ' + client + ' -> ssid: ' + ssid
+        body = header + 'new: ' + client + ' -> ssid: ' + ssid
         send_mail(body)
-        print('{}: new client: {} -> ssid: {}'.format(str(time.ctime()),client,ssid))
+        print('{}: new: {} -> ssid: {}'.format(arrival_time,client,ssid))
     elif client in client_db and ssid not in client_db[client]:
         client_db[client].append(ssid)
-        body = header + 'repeat client: ' + client + ' ssids: ' + str(client_db[client])
+        body = header + 'update: ' + client + ' ssids: ' + str(client_db[client])
         send_mail(body)
-        print('{}: updating existing client: {} -> ssids: {}'.format(str(time.ctime()),client, client_db[client]))
+        print('{}: update: {} -> ssids: {}'.format(arrival_time,client, client_db[client]))
 
 
 def pkt_handler(pkt):
@@ -56,9 +56,10 @@ def pkt_handler(pkt):
             if '\x00' in pkt.info:
                 pass
             elif pkt.info not in trusted_ssid and len(pkt.info) > 0:
+                arrival_time = datetime.fromtimestamp(pkt.time).strftime('%Y-%m-%d %a %H:%M:%S')
                 with open(log_file, 'a') as f:
-                    f.write(time.strftime('%c') + ', ' + pkt.info + ', ' + pkt.addr2 + '\n')
-                check_client_db(pkt.addr2, pkt.info)
+                    f.write(arrival_time + ', ' + pkt.info + ', ' + pkt.addr2 + '\n')
+                check_client_db(pkt.addr2, pkt.info, arrival_time)
         except AttributeError:
             pass
 
