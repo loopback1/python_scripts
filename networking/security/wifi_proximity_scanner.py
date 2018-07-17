@@ -17,7 +17,9 @@ from scapy.all import *
 
 
 # known and trusted SSIDs
-trusted_ssid = ['ssid1', 'ssid2' ]
+trusted_ssid = [
+        ]
+client_white_list = []
 
 # init client db
 client_db = {}
@@ -67,7 +69,7 @@ def client_db_insert(db, client, ssid, arrival_time, day_of_week):
 def pkt_handler(pkt):
     if pkt.haslayer(Dot11):
         try:
-            if '\x00' in pkt.info:
+            if '\x00' in pkt.info or pkt.addr2 in client_white_list:
                 pass
             elif pkt.info not in trusted_ssid and len(pkt.info) > 0:
                 arrival_time = datetime.fromtimestamp(pkt.time).strftime('%Y-%m-%d %H:%M:%S')
