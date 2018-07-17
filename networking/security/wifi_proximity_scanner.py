@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 '''
-client SSID beacon sniffer
+client SSID beacon recon
 
 used to monitor night activity around the house from untrusted wifi clients.
 
-requires aircrack-ng + scapy and decent wifi nic to monitor for frames.
+requires nic in monitor mode using aircrack-ng/iwconfig + scapy and decent wifi nic to monitor for frames.
 
 maintains client database and trusted SSID list used to ignore clients looking for local APs (neighbors etc)
+
 '''
 import smtplib
 import time
@@ -16,19 +17,19 @@ from scapy.all import *
 
 
 # known and trusted SSIDs
-trusted_ssid = ['ssid1', 'ssid2']
+trusted_ssid = ['ssid1', 'ssid2' ]
 
 # init client db
 client_db = {}
 
-# client sqlite3 db
+# client sqlite db
 sqlite3_db = '/home/jlima/rogue_wifi_beacons.db'
 
 def send_mail(body):
     try:
-        gmail_user = 'xxxxx@gmail.com'
-        gmail_password = 'pass'
-        to = ['email@yahoo.com']
+        gmail_user = ''
+        gmail_password = ''
+        to = ['']
         server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
         server.ehlo()
         server.login(gmail_user, gmail_password)
@@ -52,9 +53,13 @@ def check_client_db(client, ssid, arrival_time):
 
 def client_db_insert(db, client, ssid, arrival_time, day_of_week):
     try:
+        ssid.encode('ascii') # temp testing non ascci ssid
         db.execute('INSERT INTO clients VALUES (?,?,?,?)', (day_of_week, arrival_time, \
             client, ssid ))
         db.commit()
+    except UnicodeEncodeError:
+        print('non ascii ssid\n')
+        pass
     except Exception as e:
 #        print(e)
         pass
@@ -72,7 +77,10 @@ def pkt_handler(pkt):
         except AttributeError:
             pass
 
-''' create a sqlite3 db with unique rows, this ignores duplicate rows which may come in with the same time.keeps db small but also allows the same client record inserted with a later time stamp. '''
+
+'''
+create a sqlite3 db with unique rows, this ignores duplicate rows which may come in with the same timestamp.
+also keeps the db small but allows the same client record inserted with a later time stamp. '''
 
 if __name__ == '__main__':
     try:
