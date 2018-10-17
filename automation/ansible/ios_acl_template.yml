@@ -1,0 +1,41 @@
+---
+- hosts: routers_ios
+  connection: local
+
+  tasks:
+
+    - name: ACL-IN for interface gig1/0
+      ios_config:
+        lines:
+          - permit tcp any any eq 22
+          - permit udp any any eq domain
+          - permit udp 192.162.0.0 0.0.0.255 any eq 1821
+          - permit tcp any host 2.2.2.2
+        parents: [ "ip access-list extended ACL-IN" ]
+        before:
+          - interface GigabitEthernet1/0
+          - no ip access-group ACL-IN in
+          - no ip access-list extended ACL-IN
+        after:
+          - interface GigabitEthernet1/0
+          - ip access-group ACL-IN in
+        match: exact
+      notify:
+        - save config
+
+    - name: diff the startup-config against the running-config
+      ios_config:
+        diff_against: startup
+        diff_ignore_lines:
+          - ntp clock .*
+
+    # - name: save running config if changed
+    #   ios_config:
+    #     save_when: modified
+  handlers:
+    - name: save config
+      ios_command:
+        commands: "write mem"
+        timeout: 40
+
+
