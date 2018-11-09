@@ -1,0 +1,46 @@
+---
+- hosts: all_datacenters
+  connection: local
+  gather_facts: no
+
+  tasks:
+    # - name: get facts list
+    #   ios_facts:
+    #     gather_subset:
+    #       - "config"
+    #   register: my_facts
+
+    # - debug:
+    #     var: my_facts.ansible_facts.ansible_net_config.splitlines()[0:20]
+    # - name: get facts list
+      # ios_command:
+        # commands:
+          # - sho version
+          # - sho interface
+          # - sho clock
+      # register: my_commands
+    # - debug:
+        # var: my_commands.stdout_lines
+
+    - name: get show run output
+      ios_command:
+        commands:
+          - show run | i ntp server
+
+      register: my_output
+    - debug:
+        var: my_output.stdout_lines
+
+    - name: remove all ntp servers
+      with_items: "{{ my_output.stdout_lines }}"
+      ios_config:
+        lines:
+          - no {{ item }}
+      when: 'item not in global_servers.ntp_servers'
+
+
+
+
+    # - debug:
+    #     var: my_facts.ansible_facts.ansible_net_config.splitlines()[0:20]
+
