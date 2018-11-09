@@ -6,7 +6,7 @@ global_servers:
     - 2.2.2.2
     - 3.3.3.3
     - 5.5.5.5
-    
+
   ntp_servers:
     - ntp server 10.104.20.1
     - ntp server 10.100.10.1 prefer
@@ -14,10 +14,10 @@ global_servers:
     - ntp server 10.104.11.1
     - ntp server 10.102.11.2
 
-    
-  wan_interfaces:
-    - GigabitEthernet1/0
-    - GigabitEthernet2/0
-    - GigabitEthernet3/0
-    
-    
+
+wan_interfaces:
+  - GigabitEthernet1/0
+  - GigabitEthernet2/0
+  - GigabitEthernet3/0
+
+
