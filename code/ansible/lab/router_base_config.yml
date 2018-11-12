@@ -1,5 +1,5 @@
 ---
-- hosts: all_datacenters
+- hosts: dc1east
   connection: local
   gather_facts: no
 
@@ -29,7 +29,7 @@
         backup: yes
 
     - name: bind ACL to interface list
-      with_items: "{{ global_servers.wan_interfaces }}"
+      with_items: "{{ wan_interfaces }}"
       ios_config:
         lines:
           - ip access-group DC1EAST_ACL-IN in
@@ -39,7 +39,23 @@
       with_items: "{{ global_servers.dns_servers }}"
       ios_config:
         lines:
-          - ip name-server {{ item }}
+          - "{{ item }}"
+
+    - name: get current ntp servers
+      ios_command:
+        commands:
+          - show run | i ntp server
+      register: current_ntp
+
+    # - debug:
+    #     var: current_ntp.stdout_lines
+
+    - name: get current dns servers
+      ios_command:
+        commands:
+          - show run | i name-server
+      register: current_dns
+
 
     - name: deploy ntp servers
       with_items: "{{ global_servers.ntp_servers }}"
@@ -47,7 +63,19 @@
         lines:
           - "{{ item }}"
 
+    - name: remove non-compliant ntp servers
+      with_items: "{{ current_ntp.stdout_lines }}"
+      ios_config:
+        lines:
+          - no {{ item }}
+      when: 'item not in global_servers.ntp_servers'
 
+    - name: remove non-compliant dns servers
+      with_items: "{{ current_dns.stdout_lines }}"
+      ios_config:
+        lines:
+          - no {{ item }}
+      when: 'item not in global_servers.dns_servers'
 
     - name: save running to startup when modified
       ios_config:
