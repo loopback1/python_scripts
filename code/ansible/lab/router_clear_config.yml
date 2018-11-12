@@ -7,9 +7,18 @@
   #   - infrastructure_servers.yml
 
   tasks:
-    - name: remove access-list
+    - name: get current access-lists
+      ios_command:
+        commands:
+          - show run | i ip access-list extended
+      register: current_acl
+
+    - name: remove all access-lists
+      with_items: "{{ current_acl.stdout_lines }}"
       ios_config:
-        lines: no ip access-list extended DC1EAST_ACL-IN
+        lines:
+          - no {{ item }}
+      when: current_acl.stdout[0] != ""
 
     - name: remove ACL from interfaces
       with_items: "{{ wan_interfaces }}"
@@ -17,6 +26,7 @@
         lines:
           - no ip access-group DC1EAST_ACL-IN in
         parents: interface {{ item }}
+      when: current_acl.stdout[0] != ""
 
     - name: get current ntp servers
       ios_command:
