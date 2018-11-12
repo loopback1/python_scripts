@@ -15,24 +15,24 @@
           - deny   tcp host 192.162.1.2 any eq 8888
           - permit udp 192.162.0.0 0.0.0.255 any eq 1821
           - permit udp 192.162.0.0 0.0.0.255 any eq 1822
-        parents: ip access-list extended DC1EAST_ACL-IN
+        parents: ip access-list extended outside_in
         match: exact
         # before:
         #   - interface GigabitEthernet1/0
-        #   - no ip access-group DC1EAST_ACL-IN in
-        #   - no ip access-list extended DC1EAST_ACL-IN
+        #   - no ip access-group outside_in in
+        #   - no ip access-list extended outside_in
         # after:
         #   - interface GigabitEthernet1/0
-        #   - ip access-group DC1EAST_ACL-IN in
+        #   - ip access-group outside_in in
         before:
-          - no ip access-list extended DC1EAST_ACL-IN
+          - no ip access-list extended outside_in
         backup: yes
 
     - name: bind ACL to interface list
       with_items: "{{ wan_interfaces }}"
       ios_config:
         lines:
-          - ip access-group DC1EAST_ACL-IN in
+          - ip access-group outside_in in
         parents: interface {{ item }}
 
     - name: deploy dns servers
@@ -68,14 +68,14 @@
       ios_config:
         lines:
           - no {{ item }}
-      when: '(item not in global_servers.ntp_servers) and (global_servers.ntp_servers != "")'
+      when: '(item not in global_servers.ntp_servers) and ( current_ntp.stdout[0] != "" )'
 
     - name: remove non-compliant dns servers
       with_items: "{{ current_dns.stdout_lines }}"
       ios_config:
         lines:
           - no {{ item }}
-      when: 'item not in global_servers.dns_servers'
+      when: '(item not in global_servers.dns_servers) and ( current_dns.stdout[0] != "" )'
 
     - name: save running to startup when modified
       ios_config:
