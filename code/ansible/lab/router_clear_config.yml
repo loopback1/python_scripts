@@ -1,0 +1,56 @@
+---
+- hosts: dc1east,dc2west
+  connection: local
+  gather_facts: no
+
+  # vars_files:
+  #   - infrastructure_servers.yml
+
+  tasks:
+    - name: remove access-list
+      ios_config:
+        lines: no ip access-list extended DC1EAST_ACL-IN
+
+    - name: remove ACL from interfaces
+      with_items: "{{ wan_interfaces }}"
+      ios_config:
+        lines:
+          - no ip access-group DC1EAST_ACL-IN in
+        parents: interface {{ item }}
+
+    - name: get current ntp servers
+      ios_command:
+        commands:
+          - show run | i ntp server
+      register: current_ntp
+
+    # - debug:
+    #     var: current_ntp
+
+    - name: get current dns servers
+      ios_command:
+        commands:
+          - show run | i name-server
+      register: current_dns
+
+    # - debug:
+    #     var: current_dns
+
+    - name: remove ntp servers
+      with_items: "{{ current_ntp.stdout_lines }}"
+      ios_config:
+        lines:
+          - no {{ item }}
+      when: current_ntp.stdout[0] != ""
+
+    - name: remove dns servers
+      with_items: "{{ current_dns.stdout_lines }}"
+      ios_config:
+        lines:
+          - no {{ item }}
+      when: current_dns.stdout[0] != ""
+
+    - name: save running to startup when modified
+      ios_config:
+        save_when: modified
+
