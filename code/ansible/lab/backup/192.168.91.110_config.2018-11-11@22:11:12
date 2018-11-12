@@ -1,15 +1,15 @@
 Building configuration...
 
-Current configuration : 3232 bytes
+Current configuration : 3306 bytes
 !
-! Last configuration change at 00:12:59 UTC Mon Nov 12 2018 by gns3
+! Last configuration change at 02:24:39 UTC Mon Nov 12 2018 by gns3
 upgrade fpd auto
 version 15.2
 service timestamps debug datetime msec
 service timestamps log datetime msec
 no service password-encryption
 !
-hostname EDGERT1
+hostname dc1east_ios
 !
 boot-start-marker
 boot-end-marker
@@ -79,8 +79,8 @@ interface Loopback0
  ip address 10.0.0.2 255.255.255.255
 !
 interface FastEthernet0/0
- description vm-private-nic
- ip address 192.168.91.20 255.255.255.0
+ description ISP_CLOUD
+ ip address 192.168.91.110 255.255.255.0
  duplex half
 !
 interface GigabitEthernet1/0
@@ -104,6 +104,11 @@ interface GigabitEthernet3/0
  ip address 100.64.150.162 255.255.255.0
  ip access-group DC1EAST_ACL-IN in
  ip nat enable
+ negotiation auto
+!
+interface GigabitEthernet4/0
+ no ip address
+ shutdown
  negotiation auto
 !
 router ospf 12345

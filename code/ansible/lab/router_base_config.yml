@@ -1,5 +1,5 @@
 ---
-- hosts: dc1east
+- hosts: dc1east,dc2west
   connection: local
   gather_facts: no
 
@@ -68,7 +68,7 @@
       ios_config:
         lines:
           - no {{ item }}
-      when: 'item not in global_servers.ntp_servers'
+      when: '(item not in global_servers.ntp_servers) and (global_servers.ntp_servers != "")'
 
     - name: remove non-compliant dns servers
       with_items: "{{ current_dns.stdout_lines }}"
