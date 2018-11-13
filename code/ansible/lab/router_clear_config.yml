@@ -7,6 +7,24 @@
   #   - infrastructure_servers.yml
 
   tasks:
+
+    - name: get current ntp servers
+      ios_command:
+        commands:
+          - show run | i ntp server
+      register: current_ntp
+
+    # - debug:
+    #     var: current_ntp
+
+    - name: get current dns servers
+      ios_command:
+        commands:
+          - show run | i name-server
+      register: current_dns
+
+    # - debug:
+    #     var: current_dns
     - name: get current access-lists
       ios_command:
         commands:
@@ -28,23 +46,6 @@
           - no {{ item }}
       when: current_acl.stdout[0] != ""
 
-    - name: get current ntp servers
-      ios_command:
-        commands:
-          - show run | i ntp server
-      register: current_ntp
-
-    # - debug:
-    #     var: current_ntp
-
-    - name: get current dns servers
-      ios_command:
-        commands:
-          - show run | i name-server
-      register: current_dns
-
-    # - debug:
-    #     var: current_dns
 
     - name: remove ntp servers
       with_items: "{{ current_ntp.stdout_lines }}"
