@@ -54,26 +54,27 @@
           - archive
           - log config
 
-
     - name: bind ACL to interface list
       with_items: "{{ wan_interfaces }}"
       ios_config:
         lines:
           - ip access-group outside_in in
         parents: interface {{ item }}
+      when: wan_interfaces is defined
 
     - name: deploy dns servers
       with_items: "{{ global_servers.dns_servers }}"
       ios_config:
         lines:
           - "{{ item }}"
-
+      when: global_servers.dns_servers is defined
 
     - name: deploy ntp servers
       with_items: "{{ global_servers.ntp_servers }}"
       ios_config:
         lines:
           - "{{ item }}"
+      when: global_servers.ntp_servers is defined
 
     - name: remove non-compliant ntp servers
       with_items: "{{ current_ntp.stdout_lines }}"
