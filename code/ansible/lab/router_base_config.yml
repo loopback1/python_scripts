@@ -7,6 +7,21 @@
   #   - infrastructure_servers.yml
 
   tasks:
+    - name: get current ntp servers
+      ios_command:
+        commands:
+          - show run | i ntp server
+      register: current_ntp
+
+    # - debug:
+    #     var: current_ntp.stdout_lines
+
+    - name: get current dns servers
+      ios_command:
+        commands:
+          - show run | i name-server
+      register: current_dns
+
     - name: deploy access list
       ios_config:
         lines:
@@ -40,21 +55,6 @@
       ios_config:
         lines:
           - "{{ item }}"
-
-    - name: get current ntp servers
-      ios_command:
-        commands:
-          - show run | i ntp server
-      register: current_ntp
-
-    # - debug:
-    #     var: current_ntp.stdout_lines
-
-    - name: get current dns servers
-      ios_command:
-        commands:
-          - show run | i name-server
-      register: current_dns
 
 
     - name: deploy ntp servers
