@@ -44,6 +44,17 @@
           - no ip access-list extended outside_in
         backup: yes
 
+    - name: archive log config
+      ios_config:
+        lines:
+          - logging enable
+          - logging size 1000
+          - notify syslog contenttype plaintext
+        parents:
+          - archive
+          - log config
+
+
     - name: bind ACL to interface list
       with_items: "{{ wan_interfaces }}"
       ios_config:
