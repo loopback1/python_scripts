@@ -7,6 +7,7 @@
   #   - infrastructure_servers.yml
 
   tasks:
+
     - name: get current ntp servers
       ios_command:
         commands:
