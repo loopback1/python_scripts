@@ -2,17 +2,10 @@
 - hosts: dc1east
   connection: local
   gather_facts: no
-  strategy: free
+  # strategy: linear by default
+  # strategy: free
 
   tasks:
-    # - name: get facts list
-    #   ios_facts:
-    #     gather_subset:
-    #       - "config"
-    #   register: my_facts
-
-    # - debug:
-    #     var: my_facts.ansible_facts.ansible_net_config.splitlines()[0:20]
     - name: get dns servers
       ios_command:
         commands:
@@ -23,6 +16,14 @@
       with_items: "{{ my_commands.stdout_lines }}"
       when: "'8.8.8.8' in item"
 
+    # - name: get facts list
+    #   ios_facts:
+    #     gather_subset:
+    #       - "config"
+    #   register: my_facts
+
+    # - debug:
+    #     var: my_facts.ansible_facts.ansible_net_config.splitlines()[0:20]
     # - name: loop through show run output
     #   ios_command:
     #     commands:
@@ -40,7 +41,4 @@
 
 
 
-
-    # - debug:
-    #     var: my_facts.ansible_facts.ansible_net_config.splitlines()[0:20]
 
