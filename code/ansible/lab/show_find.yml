@@ -1,0 +1,46 @@
+---
+- hosts: dc1east
+  connection: local
+  gather_facts: no
+  strategy: free
+
+  tasks:
+    # - name: get facts list
+    #   ios_facts:
+    #     gather_subset:
+    #       - "config"
+    #   register: my_facts
+
+    # - debug:
+    #     var: my_facts.ansible_facts.ansible_net_config.splitlines()[0:20]
+    - name: get dns servers
+      ios_command:
+        commands:
+          - show run | i name-server
+      register: my_commands
+
+    - debug: msg="8.8.8.8 is present in {{ ansible_host }}"
+      with_items: "{{ my_commands.stdout_lines }}"
+      when: "'8.8.8.8' in item"
+
+    # - name: loop through show run output
+    #   ios_command:
+    #     commands:
+    #       - sho run | i ntp server
+
+    #   register: my_var
+    # - debug:
+    #     var: my_var.stdout_lines
+
+    # - name: remove all dns servers
+    #   with_items: "{{ my_var.stdout_lines }}"
+    #   ios_config:
+    #     lines:
+    #       - no {{ item }}
+
+
+
+
+    # - debug:
+    #     var: my_facts.ansible_facts.ansible_net_config.splitlines()[0:20]
+

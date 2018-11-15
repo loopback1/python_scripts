@@ -1,5 +1,5 @@
 ---
-- hosts: dc1east,dc2west
+- hosts: dc1east
   connection: local
   gather_facts: no
 
