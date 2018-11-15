@@ -12,7 +12,7 @@
           - show run | i name-server
       register: my_commands
 
-    - debug: msg="8.8.8.8 is present in {{ ansible_host }}"
+    - debug: msg="{{ ansible_host }},true"
       with_items: "{{ my_commands.stdout_lines }}"
       when: "'8.8.8.8' in item"
 
