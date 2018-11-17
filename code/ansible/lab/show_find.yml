@@ -1,5 +1,5 @@
 ---
-- hosts: dc1east
+- hosts: all_datacenters
   connection: local
   gather_facts: no
   # strategy: linear by default
