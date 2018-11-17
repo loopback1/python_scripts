@@ -1,7 +1,7 @@
 ---
 - hosts: all_datacenters
   connection: local
-  gather_facts: no
+  gather_facts: False
   # strategy: linear by default
   # strategy: free
 
