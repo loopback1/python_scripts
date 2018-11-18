@@ -1,0 +1,39 @@
+---
+- hosts: dc1east,dc2west # list of "groups" defined in inventory.cfg
+  connection: local # needed when logging into network gear
+  gather_facts: False # do not gather facts about this devices if not needed
+
+  tasks:
+
+    - name: ACL-IN for interface gig1/0
+      ios_config:
+        # parent configuration line, things inside this parent are lines:
+        parents: ip access-list extended ACL-IN
+        lines:
+          # child lines inside the "parent" lines above
+          - permit tcp any any eq 22
+          - permit udp any any eq domain
+          - permit udp 192.162.0.0 0.0.0.255 any eq 1821
+          - deny   upd any any  # watch out for spaces in this line!
+          - permit tcp any host 2.2.2.2
+        # action to execute before we make changes
+        before:
+          - interface GigabitEthernet1/0
+          - no ip access-group ACL-IN in
+          - no ip access-list extended ACL-IN
+        # action to execute "after" we make changes
+        after:
+          - interface GigabitEthernet1/0
+          - ip access-group ACL-IN in
+        # the lines inside "parent" must match exactly and in order
+        match: exact
+        # write running-config to flash if we make a change
+      save_when: changed
+
+    # this diff module maybe worth looking into ;)
+    - name: diff the startup-config against the running-config
+      ios_config:
+        diff_against: startup
+        diff_ignore_lines:
+          - ntp clock .*
+
