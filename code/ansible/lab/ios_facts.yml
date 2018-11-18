@@ -4,41 +4,16 @@
   gather_facts: False
 
   tasks:
-    # - name: get facts list
-    #   ios_facts:
-    #     gather_subset:
-    #       - "config"
-    #   register: my_facts
+    - name: get facts list
+      # IOS facts module collects information about the IOS device
+      # nxos also has similar module
+      ios_facts:
+        gather_subset:
+        # only collect configuration, see online docs for full set of commands
+          - "config"
+      # store the output of ios_facts into my_facts variable
+      register: my_facts
 
-    # - debug:
-    #     var: my_facts.ansible_facts.ansible_net_config.splitlines()[0:20]
-    # - name: get facts list
-      # ios_command:
-        # commands:
-          # - sho version
-          # - sho interface
-          # - sho clock
-      # register: my_commands
-    # - debug:
-        # var: my_commands.stdout_lines
-
-    - name: loop through show run output
-      ios_command:
-        commands:
-
-          - sho run | i ntp server
-
-      register: my_var
-
+      # debug job to display the var (variable)
     - debug:
-        var: my_var.stdout_lines
-
-    - name: remove all dns servers
-      with_items: "{{ my_var.stdout_lines }}"
-      ios_config:
-        lines:
-          - no {{ item }}
-
-    # - debug:
-    #     var: my_facts.ansible_facts.ansible_net_config.splitlines()[0:20]
-
+        var: my_facts.ansible_facts.ansible_net_config.splitlines()[0:20]
