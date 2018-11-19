@@ -2,14 +2,14 @@
 "python nested list (list inside a list)"
 
 # lists start with [] brackets, all rules that apply to "python" apply to ansible
-servers = [ "10.1.1.1", "192.168.1.10", "8.8.8.8"] ]
+servers = [ "10.1.1.1", "192.168.1.10", "8.8.8.8", [ "Gigabit0/0", "Gigabit1/0", "Gigabit2/0" ] ]
 
 
 servers[0] = 10.1.1.1
 
-        servers[3] = [ "Gigabit0/0", "Gigabit1/0", "Gigabit2/0", ]
+servers[3] = [ "Gigabit0/0", "Gigabit1/0", "Gigabit2/0", ]
 
-                                                                   servers[3][2] = "Gigabit2/0"
+servers[3][2] = "Gigabit2/0"
 
 "yaml nested list (list inside a list)"
 
