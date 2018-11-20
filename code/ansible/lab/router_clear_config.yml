@@ -1,5 +1,5 @@
 ---
-- hosts: dc1east,dc2west,dc3north
+- hosts: all_datacenters
   connection: local
   gather_facts: False
 
@@ -30,6 +30,11 @@
         commands:
           - show run | i ip access-list extended
       register: current_acl
+
+    - name: remove archive log config
+      ios_config:
+        lines:
+          - no archive
 
     - name: remove ACL from interfaces
       with_items: "{{ wan_interfaces }}"
