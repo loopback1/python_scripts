@@ -2,6 +2,8 @@
 - hosts: all_datacenters
   connection: local
   gather_facts: False
+  # strategy: linear #default
+  # strategy: free
 
   # vars_files:
   #   - infrastructure_servers.yml
