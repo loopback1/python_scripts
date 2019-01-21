@@ -42,6 +42,9 @@
         lines:
           - no ip access-group outside_in in
         parents: interface {{ item }}
+
+        # when: current_acl | length != 0
+        #
       when: current_acl.stdout[0] != ""
 
     - name: remove all access-lists
