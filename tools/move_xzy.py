@@ -18,6 +18,6 @@ signal.signal(signal.SIGINT, signal.SIG_DFL)
 
 while True:
     autopy.mouse.move(200,200)
-    time.sleep(10)
+    time.sleep(20)
     autopy.mouse.move(400,400)
-    time.sleep(10)
+    time.sleep(20)

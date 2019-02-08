@@ -1,0 +1,11 @@
+*.db
+*.cache
+screenshots/*
+Neovim32/*
+Neovim64/*
+backup/
+.SublimeREPLHistory
+*.last-run
+*.log
+*.retry
+
