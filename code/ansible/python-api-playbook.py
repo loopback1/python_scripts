@@ -1,8 +1,6 @@
 # use your venv here
 #
 # wrap a playbook inside a flask restful api app..
-
-
 import subprocess
 import re
 from flask import Flask, request
@@ -26,14 +24,14 @@ def run_clear_vpn():
     assumes that -i is a dynamic inventory
     '''
     p = subprocess.Popen('ansible-playbook -f 40 -i clear_vpn_inv.py clear__vpn.yml',
-                        shell=True, 
+                        shell=True,
                          stdout=subprocess.PIPE,
                          stderr=subprocess.STDOUT
                 )
     for line in p.stdout.readlines():
             print line,
             retval = p.wait()
-    return 
+    return
 
 # create Item class and inherit Resource flask class
 class Item(Resource):
