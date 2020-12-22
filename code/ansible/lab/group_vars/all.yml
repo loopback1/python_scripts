@@ -8,11 +8,11 @@ global_servers:
     - ip name-server 5.5.5.5
 
   ntp_servers:
-    - ntp server 10.104.20.1
-    - ntp server 10.100.10.1 prefer
-    - ntp server 10.100.20.1
-    - ntp server 10.104.11.1
-    # - ntp server 10.102.11.2
+    - ntp server 10.20.20.1
+    - ntp server 10.20.10.1 prefer
+    - ntp server 10.20.20.1
+    - ntp server 10.20.11.1
+    # - ntp server 10.20.11.2
 
 
 wan_interfaces:
