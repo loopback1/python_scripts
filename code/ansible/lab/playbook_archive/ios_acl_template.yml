@@ -1,7 +1,7 @@
 ---
 - hosts: routers_ios
   connection: local
-  gather_facts: False
+  gather_facts: false
 
   tasks:
 

@@ -1,10 +1,9 @@
 ---
 - hosts: all_datacenters
   connection: local
-  gather_facts: False
+  gather_facts: false
 
   tasks:
-
     - name: get show run output
       ios_command:
         commands:
@@ -16,14 +15,10 @@
 
     - name: remove all ntp servers
       # loop through my_output.stdout_lines "list"
-      with_items: "{{ my_output.stdout_lines }}"
+      with_items: '{{ my_output.stdout_lines }}'
       ios_config:
         lines:
           - no {{ item }}
       # only execut ios_config/lines when the line below is "true"
       # e.g. if the value of "item" as we look is "not" in our
       when: 'item not in global_servers.ntp_servers'
-
-
-
-
